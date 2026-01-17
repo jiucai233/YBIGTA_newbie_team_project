@@ -6,4 +6,4 @@ Team member: 배순은 양진완
 we good
 
 ### Member Introduction
-신영군: ㅎㅎ
+신영군: YBIGTA 28기 신영군입니다! 반갑습니다
