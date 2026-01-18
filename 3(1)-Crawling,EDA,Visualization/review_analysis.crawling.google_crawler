@@ -1,0 +1,514 @@
+2026-01-18 16:36:11,797 - INFO - GoogleCrawler initialized.
+2026-01-18 16:36:11,798 - INFO - Scraping reviews from Google Maps...
+2026-01-18 16:36:11,799 - DEBUG - Selenium Manager binary found at: D:\my_codes\YbigtaHW\YBIGTA_newbie_team_project\.venv\lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe
+2026-01-18 16:36:11,799 - DEBUG - Executing process: D:\my_codes\YbigtaHW\YBIGTA_newbie_team_project\.venv\lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe --browser chrome --debug --language-binding python --output json
+2026-01-18 16:36:11,909 - DEBUG - chromedriver not found in PATH
+2026-01-18 16:36:11,909 - DEBUG - chrome detected at C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-01-18 16:36:11,909 - DEBUG - Detected browser: chrome 143.0.7499.193
+2026-01-18 16:36:11,909 - DEBUG - Required driver: chromedriver 143.0.7499.192
+2026-01-18 16:36:11,909 - DEBUG - chromedriver 143.0.7499.192 already in the cache
+2026-01-18 16:36:11,909 - DEBUG - Driver path: D:\Users\a normal person\.cache\selenium\chromedriver\win64\143.0.7499.192\chromedriver.exe
+2026-01-18 16:36:11,910 - DEBUG - Browser path: C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-01-18 16:36:11,915 - DEBUG - Started executable: `D:\Users\a normal person\.cache\selenium\chromedriver\win64\143.0.7499.192\chromedriver.exe` in a child process with pid: 17860 using 0 to output -3
+2026-01-18 16:36:12,454 - DEBUG - POST http://localhost:11998/session {'capabilities': {'firstMatch': [{}], 'alwaysMatch': {'browserName': 'chrome', 'pageLoadStrategy': <PageLoadStrategy.normal: 'normal'>, 'browserVersion': None, 'goog:chromeOptions': {'extensions': [], 'binary': 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe', 'args': ['--no-sandbox', '--disable-dev-shm-usage']}}}}
+2026-01-18 16:36:12,455 - DEBUG - Starting new HTTP connection (1): localhost:11998
+2026-01-18 16:36:13,239 - DEBUG - http://localhost:11998 "POST /session HTTP/1.1" 200 0
+2026-01-18 16:36:13,239 - DEBUG - Remote response: status=200 | data={"value":{"capabilities":{"acceptInsecureCerts":false,"browserName":"chrome","browserVersion":"143.0.7499.193","chrome":{"chromedriverVersion":"143.0.7499.192 (be2c1f4fd451578a9ada68a0ac12d659362b44bf-refs/branch-heads/7499@{#4083})","userDataDir":"C:\\Users\\ANORMA~1\\AppData\\Local\\Temp\\scoped_dir17860_458124396"},"fedcm:accounts":true,"goog:chromeOptions":{"debuggerAddress":"localhost:9623"},"goog:processID":13648,"networkConnectionEnabled":false,"pageLoadStrategy":"normal","platformName":"windows","proxy":{},"setWindowRect":true,"strictFileInteractability":false,"timeouts":{"implicit":0,"pageLoad":300000,"script":30000},"unhandledPromptBehavior":"dismiss and notify","webauthn:extension:credBlob":true,"webauthn:extension:largeBlob":true,"webauthn:extension:minPinLength":true,"webauthn:extension:prf":true,"webauthn:virtualAuthenticators":true},"sessionId":"3e722a2d690998b78546a3aeeccff92b"}} | headers=HTTPHeaderDict({'Content-Length': '908', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:36:13,240 - DEBUG - Finished Request
+2026-01-18 16:36:13,240 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/timeouts {'implicit': 10000}
+2026-01-18 16:36:13,242 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/timeouts HTTP/1.1" 200 0
+2026-01-18 16:36:13,242 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:36:13,242 - DEBUG - Finished Request
+2026-01-18 16:36:13,242 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/url {'url': 'https://www.google.com/maps/place/Lotte+World/data=!4m12!1m2!2m1!1sLotte+World!3m8!1s0x357ca5a7250ef...'}
+2026-01-18 16:36:14,394 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/url HTTP/1.1" 200 0
+2026-01-18 16:36:14,394 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:36:14,394 - DEBUG - Finished Request
+2026-01-18 16:36:14,394 - INFO - Browser opened, refreshing page...
+2026-01-18 16:36:14,394 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/refresh {}
+2026-01-18 16:36:15,085 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/refresh HTTP/1.1" 200 0
+2026-01-18 16:36:15,085 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:36:15,085 - DEBUG - Finished Request
+2026-01-18 16:36:17,093 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/element {'using': 'css selector', 'value': 'div[role="feed"]'}
+2026-01-18 16:36:27,153 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/element HTTP/1.1" 404 0
+2026-01-18 16:36:27,153 - DEBUG - Remote response: status=404 | data={"value":{"error":"no such element","message":"no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div[role=\"feed\"]\"}\n  (Session info: chrome=143.0.7499.193)","stacktrace":"Symbols not available. Dumping unresolved backtrace:\n\t0x7ff689af88d5\n\t0x7ff689af8930\n\t0x7ff6898d165d\n\t0x7ff689929a33\n\t0x7ff689929d3c\n\t0x7ff68997df67\n\t0x7ff68997ac97\n\t0x7ff68991ac29\n\t0x7ff68991ba93\n\t0x7ff689e10620\n\t0x7ff689e0af60\n\t0x7ff689e296c6\n\t0x7ff689b15dd4\n\t0x7ff689b1ed7c\n\t0x7ff689b01ff4\n\t0x7ff689b021a5\n\t0x7ff689ae7ed2\n\t0x7ffb7e9ae8d7\n\t0x7ffb802bc34c\n"}} | headers=HTTPHeaderDict({'Content-Length': '611', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:36:27,153 - DEBUG - Finished Request
+2026-01-18 16:36:27,667 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/element {'using': 'css selector', 'value': 'div[role="feed"]'}
+2026-01-18 16:36:37,700 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/element HTTP/1.1" 404 0
+2026-01-18 16:36:37,700 - DEBUG - Remote response: status=404 | data={"value":{"error":"no such element","message":"no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div[role=\"feed\"]\"}\n  (Session info: chrome=143.0.7499.193)","stacktrace":"Symbols not available. Dumping unresolved backtrace:\n\t0x7ff689af88d5\n\t0x7ff689af8930\n\t0x7ff6898d165d\n\t0x7ff689929a33\n\t0x7ff689929d3c\n\t0x7ff68997df67\n\t0x7ff68997ac97\n\t0x7ff68991ac29\n\t0x7ff68991ba93\n\t0x7ff689e10620\n\t0x7ff689e0af60\n\t0x7ff689e296c6\n\t0x7ff689b15dd4\n\t0x7ff689b1ed7c\n\t0x7ff689b01ff4\n\t0x7ff689b021a5\n\t0x7ff689ae7ed2\n\t0x7ffb7e9ae8d7\n\t0x7ffb802bc34c\n"}} | headers=HTTPHeaderDict({'Content-Length': '611', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:36:37,700 - DEBUG - Finished Request
+2026-01-18 16:36:37,700 - WARNING - Could not find div[role='feed'], trying alternative selector...
+2026-01-18 16:36:37,700 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/element {'using': 'xpath', 'value': "//div[contains(@class, 'm6QErb') and contains(@class, 'DxyBCb')]"}
+2026-01-18 16:36:37,712 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/element HTTP/1.1" 200 0
+2026-01-18 16:36:37,712 - DEBUG - Remote response: status=200 | data={"value":{"element-6066-11e4-a52e-4f735466cecf":"f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648"}} | headers=HTTPHeaderDict({'Content-Length': '127', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:36:37,712 - DEBUG - Finished Request
+2026-01-18 16:36:37,713 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:36:37,722 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:36:37,722 - DEBUG - Remote response: status=200 | data={"value":5270} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:36:37,722 - DEBUG - Finished Request
+2026-01-18 16:36:37,722 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:36:37,732 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:36:37,734 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:36:37,734 - DEBUG - Finished Request
+2026-01-18 16:36:39,739 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:36:39,744 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:36:39,744 - DEBUG - Remote response: status=200 | data={"value":11139} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:36:39,744 - DEBUG - Finished Request
+2026-01-18 16:36:39,744 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:36:39,748 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:36:39,748 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:36:39,748 - DEBUG - Finished Request
+2026-01-18 16:36:41,750 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:36:41,759 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:36:41,760 - DEBUG - Remote response: status=200 | data={"value":17030} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:36:41,760 - DEBUG - Finished Request
+2026-01-18 16:36:41,760 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:36:41,764 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:36:41,764 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:36:41,764 - DEBUG - Finished Request
+2026-01-18 16:36:43,771 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:36:43,786 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:36:43,787 - DEBUG - Remote response: status=200 | data={"value":22943} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:36:43,787 - DEBUG - Finished Request
+2026-01-18 16:36:43,787 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:36:43,797 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:36:43,797 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:36:43,797 - DEBUG - Finished Request
+2026-01-18 16:36:45,813 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:36:45,826 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:36:45,827 - DEBUG - Remote response: status=200 | data={"value":28813} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:36:45,827 - DEBUG - Finished Request
+2026-01-18 16:36:45,827 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:36:45,832 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:36:45,833 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:36:45,833 - DEBUG - Finished Request
+2026-01-18 16:36:47,839 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:36:47,851 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:36:47,852 - DEBUG - Remote response: status=200 | data={"value":34826} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:36:47,852 - DEBUG - Finished Request
+2026-01-18 16:36:47,852 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:36:47,863 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:36:47,863 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:36:47,863 - DEBUG - Finished Request
+2026-01-18 16:36:49,871 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:36:49,876 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:36:49,877 - DEBUG - Remote response: status=200 | data={"value":40718} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:36:49,877 - DEBUG - Finished Request
+2026-01-18 16:36:49,877 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:36:49,881 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:36:49,882 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:36:49,882 - DEBUG - Finished Request
+2026-01-18 16:36:51,896 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:36:51,909 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:36:51,910 - DEBUG - Remote response: status=200 | data={"value":45363} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:36:51,910 - DEBUG - Finished Request
+2026-01-18 16:36:51,911 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:36:51,921 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:36:51,921 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:36:51,922 - DEBUG - Finished Request
+2026-01-18 16:36:53,929 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:36:53,933 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:36:53,933 - DEBUG - Remote response: status=200 | data={"value":50996} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:36:53,933 - DEBUG - Finished Request
+2026-01-18 16:36:53,933 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:36:53,937 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:36:53,937 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:36:53,937 - DEBUG - Finished Request
+2026-01-18 16:36:55,946 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:36:55,961 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:36:55,963 - DEBUG - Remote response: status=200 | data={"value":56443} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:36:55,963 - DEBUG - Finished Request
+2026-01-18 16:36:55,963 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:36:55,973 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:36:55,973 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:36:55,973 - DEBUG - Finished Request
+2026-01-18 16:36:57,984 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:36:57,992 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:36:57,992 - DEBUG - Remote response: status=200 | data={"value":61971} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:36:57,992 - DEBUG - Finished Request
+2026-01-18 16:36:57,993 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:36:58,002 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:36:58,002 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:36:58,002 - DEBUG - Finished Request
+2026-01-18 16:37:00,005 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:00,017 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:00,017 - DEBUG - Remote response: status=200 | data={"value":66948} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:00,018 - DEBUG - Finished Request
+2026-01-18 16:37:00,018 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:00,026 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:00,026 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:00,026 - DEBUG - Finished Request
+2026-01-18 16:37:02,028 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:02,037 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:02,037 - DEBUG - Remote response: status=200 | data={"value":72481} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:02,037 - DEBUG - Finished Request
+2026-01-18 16:37:02,037 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:02,049 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:02,050 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:02,050 - DEBUG - Finished Request
+2026-01-18 16:37:04,063 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:04,077 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:04,077 - DEBUG - Remote response: status=200 | data={"value":78029} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:04,078 - DEBUG - Finished Request
+2026-01-18 16:37:04,078 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:04,087 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:04,087 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:04,087 - DEBUG - Finished Request
+2026-01-18 16:37:06,092 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:06,101 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:06,101 - DEBUG - Remote response: status=200 | data={"value":82715} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:06,101 - DEBUG - Finished Request
+2026-01-18 16:37:06,101 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:06,107 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:06,107 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:06,107 - DEBUG - Finished Request
+2026-01-18 16:37:08,121 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:08,125 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:08,125 - DEBUG - Remote response: status=200 | data={"value":88002} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:08,125 - DEBUG - Finished Request
+2026-01-18 16:37:08,125 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:08,132 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:08,132 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:08,132 - DEBUG - Finished Request
+2026-01-18 16:37:10,133 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:10,145 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:10,146 - DEBUG - Remote response: status=200 | data={"value":93567} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:10,146 - DEBUG - Finished Request
+2026-01-18 16:37:10,146 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:10,155 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:10,155 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:10,155 - DEBUG - Finished Request
+2026-01-18 16:37:12,164 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:12,170 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:12,170 - DEBUG - Remote response: status=200 | data={"value":99350} | headers=HTTPHeaderDict({'Content-Length': '15', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:12,170 - DEBUG - Finished Request
+2026-01-18 16:37:12,170 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:12,174 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:12,174 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:12,174 - DEBUG - Finished Request
+2026-01-18 16:37:14,188 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:14,196 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:14,196 - DEBUG - Remote response: status=200 | data={"value":104552} | headers=HTTPHeaderDict({'Content-Length': '16', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:14,196 - DEBUG - Finished Request
+2026-01-18 16:37:14,197 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:14,205 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:14,206 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:14,206 - DEBUG - Finished Request
+2026-01-18 16:37:16,219 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:16,229 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:16,229 - DEBUG - Remote response: status=200 | data={"value":110437} | headers=HTTPHeaderDict({'Content-Length': '16', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:16,230 - DEBUG - Finished Request
+2026-01-18 16:37:16,230 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:16,238 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:16,238 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:16,238 - DEBUG - Finished Request
+2026-01-18 16:37:18,240 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:18,251 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:18,251 - DEBUG - Remote response: status=200 | data={"value":116028} | headers=HTTPHeaderDict({'Content-Length': '16', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:18,251 - DEBUG - Finished Request
+2026-01-18 16:37:18,251 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:18,259 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:18,259 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:18,259 - DEBUG - Finished Request
+2026-01-18 16:37:20,267 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:20,279 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:20,279 - DEBUG - Remote response: status=200 | data={"value":120798} | headers=HTTPHeaderDict({'Content-Length': '16', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:20,279 - DEBUG - Finished Request
+2026-01-18 16:37:20,280 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:20,290 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:20,290 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:20,290 - DEBUG - Finished Request
+2026-01-18 16:37:22,304 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:22,309 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:22,309 - DEBUG - Remote response: status=200 | data={"value":126365} | headers=HTTPHeaderDict({'Content-Length': '16', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:22,309 - DEBUG - Finished Request
+2026-01-18 16:37:22,309 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:22,314 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:22,314 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:22,314 - DEBUG - Finished Request
+2026-01-18 16:37:24,320 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:24,331 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:24,331 - DEBUG - Remote response: status=200 | data={"value":131957} | headers=HTTPHeaderDict({'Content-Length': '16', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:24,331 - DEBUG - Finished Request
+2026-01-18 16:37:24,332 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:24,338 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:24,339 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:24,339 - DEBUG - Finished Request
+2026-01-18 16:37:26,345 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:26,358 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:26,358 - DEBUG - Remote response: status=200 | data={"value":136899} | headers=HTTPHeaderDict({'Content-Length': '16', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:26,358 - DEBUG - Finished Request
+2026-01-18 16:37:26,359 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:26,367 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:26,367 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:26,367 - DEBUG - Finished Request
+2026-01-18 16:37:28,375 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:28,391 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:28,391 - DEBUG - Remote response: status=200 | data={"value":142495} | headers=HTTPHeaderDict({'Content-Length': '16', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:28,391 - DEBUG - Finished Request
+2026-01-18 16:37:28,392 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:28,405 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:28,405 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:28,405 - DEBUG - Finished Request
+2026-01-18 16:37:30,415 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:30,425 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:30,425 - DEBUG - Remote response: status=200 | data={"value":147709} | headers=HTTPHeaderDict({'Content-Length': '16', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:30,425 - DEBUG - Finished Request
+2026-01-18 16:37:30,425 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:30,435 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:30,435 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:30,435 - DEBUG - Finished Request
+2026-01-18 16:37:32,435 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:32,448 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:32,449 - DEBUG - Remote response: status=200 | data={"value":153685} | headers=HTTPHeaderDict({'Content-Length': '16', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:32,449 - DEBUG - Finished Request
+2026-01-18 16:37:32,449 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:32,460 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:32,460 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:32,460 - DEBUG - Finished Request
+2026-01-18 16:37:34,461 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:34,472 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:34,472 - DEBUG - Remote response: status=200 | data={"value":158897} | headers=HTTPHeaderDict({'Content-Length': '16', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:34,472 - DEBUG - Finished Request
+2026-01-18 16:37:34,472 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:34,480 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:34,480 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:34,480 - DEBUG - Finished Request
+2026-01-18 16:37:36,485 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:36,489 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:36,490 - DEBUG - Remote response: status=200 | data={"value":164171} | headers=HTTPHeaderDict({'Content-Length': '16', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:36,490 - DEBUG - Finished Request
+2026-01-18 16:37:36,490 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:36,495 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:36,495 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:36,495 - DEBUG - Finished Request
+2026-01-18 16:37:38,509 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:38,522 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:38,523 - DEBUG - Remote response: status=200 | data={"value":168710} | headers=HTTPHeaderDict({'Content-Length': '16', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:38,523 - DEBUG - Finished Request
+2026-01-18 16:37:38,523 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:38,533 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:38,533 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:38,533 - DEBUG - Finished Request
+2026-01-18 16:37:40,546 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:40,554 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:40,555 - DEBUG - Remote response: status=200 | data={"value":174008} | headers=HTTPHeaderDict({'Content-Length': '16', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:40,555 - DEBUG - Finished Request
+2026-01-18 16:37:40,555 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:40,560 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:40,560 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:40,560 - DEBUG - Finished Request
+2026-01-18 16:37:42,572 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:42,579 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:42,579 - DEBUG - Remote response: status=200 | data={"value":179308} | headers=HTTPHeaderDict({'Content-Length': '16', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:42,579 - DEBUG - Finished Request
+2026-01-18 16:37:42,579 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:42,586 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:42,586 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:42,586 - DEBUG - Finished Request
+2026-01-18 16:37:44,599 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:44,609 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:44,609 - DEBUG - Remote response: status=200 | data={"value":185074} | headers=HTTPHeaderDict({'Content-Length': '16', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:44,609 - DEBUG - Finished Request
+2026-01-18 16:37:44,609 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:44,613 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:44,613 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:44,613 - DEBUG - Finished Request
+2026-01-18 16:37:46,616 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:46,631 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:46,631 - DEBUG - Remote response: status=200 | data={"value":190619} | headers=HTTPHeaderDict({'Content-Length': '16', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:46,632 - DEBUG - Finished Request
+2026-01-18 16:37:46,632 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:46,644 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:46,645 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:46,645 - DEBUG - Finished Request
+2026-01-18 16:37:48,648 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:48,661 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:48,661 - DEBUG - Remote response: status=200 | data={"value":196440} | headers=HTTPHeaderDict({'Content-Length': '16', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:48,661 - DEBUG - Finished Request
+2026-01-18 16:37:48,661 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:48,666 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:48,667 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:48,667 - DEBUG - Finished Request
+2026-01-18 16:37:50,678 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:50,684 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:50,684 - DEBUG - Remote response: status=200 | data={"value":202031} | headers=HTTPHeaderDict({'Content-Length': '16', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:50,684 - DEBUG - Finished Request
+2026-01-18 16:37:50,684 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:50,690 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:50,690 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:50,690 - DEBUG - Finished Request
+2026-01-18 16:37:52,699 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:52,716 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:52,716 - DEBUG - Remote response: status=200 | data={"value":206952} | headers=HTTPHeaderDict({'Content-Length': '16', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:52,716 - DEBUG - Finished Request
+2026-01-18 16:37:52,716 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:52,728 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:52,728 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:52,728 - DEBUG - Finished Request
+2026-01-18 16:37:54,739 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:54,743 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:54,744 - DEBUG - Remote response: status=200 | data={"value":212464} | headers=HTTPHeaderDict({'Content-Length': '16', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:54,744 - DEBUG - Finished Request
+2026-01-18 16:37:54,744 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:54,748 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:54,748 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:54,748 - DEBUG - Finished Request
+2026-01-18 16:37:56,749 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:56,763 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:56,764 - DEBUG - Remote response: status=200 | data={"value":218037} | headers=HTTPHeaderDict({'Content-Length': '16', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:56,764 - DEBUG - Finished Request
+2026-01-18 16:37:56,764 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:56,774 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:56,775 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:56,775 - DEBUG - Finished Request
+2026-01-18 16:37:58,778 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:58,795 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:58,795 - DEBUG - Remote response: status=200 | data={"value":223781} | headers=HTTPHeaderDict({'Content-Length': '16', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:58,796 - DEBUG - Finished Request
+2026-01-18 16:37:58,796 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:37:58,814 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:37:58,814 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:37:58,815 - DEBUG - Finished Request
+2026-01-18 16:38:00,825 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:38:00,833 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:38:00,833 - DEBUG - Remote response: status=200 | data={"value":228658} | headers=HTTPHeaderDict({'Content-Length': '16', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:38:00,835 - DEBUG - Finished Request
+2026-01-18 16:38:00,835 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:38:00,844 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:38:00,844 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:38:00,844 - DEBUG - Finished Request
+2026-01-18 16:38:02,845 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:38:02,947 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:38:02,947 - DEBUG - Remote response: status=200 | data={"value":233746} | headers=HTTPHeaderDict({'Content-Length': '16', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:38:02,947 - DEBUG - Finished Request
+2026-01-18 16:38:02,947 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:38:03,009 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:38:03,010 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:38:03,010 - DEBUG - Finished Request
+2026-01-18 16:38:05,015 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:38:05,021 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:38:05,022 - DEBUG - Remote response: status=200 | data={"value":238999} | headers=HTTPHeaderDict({'Content-Length': '16', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:38:05,022 - DEBUG - Finished Request
+2026-01-18 16:38:05,022 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:38:05,026 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:38:05,026 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:38:05,026 - DEBUG - Finished Request
+2026-01-18 16:38:07,033 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:38:07,047 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:38:07,047 - DEBUG - Remote response: status=200 | data={"value":243433} | headers=HTTPHeaderDict({'Content-Length': '16', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:38:07,048 - DEBUG - Finished Request
+2026-01-18 16:38:07,048 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:38:07,059 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:38:07,059 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:38:07,059 - DEBUG - Finished Request
+2026-01-18 16:38:09,063 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:38:09,076 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:38:09,076 - DEBUG - Remote response: status=200 | data={"value":248928} | headers=HTTPHeaderDict({'Content-Length': '16', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:38:09,076 - DEBUG - Finished Request
+2026-01-18 16:38:09,076 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:38:09,097 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:38:09,098 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:38:09,098 - DEBUG - Finished Request
+2026-01-18 16:38:11,112 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:38:11,127 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:38:11,128 - DEBUG - Remote response: status=200 | data={"value":253732} | headers=HTTPHeaderDict({'Content-Length': '16', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:38:11,128 - DEBUG - Finished Request
+2026-01-18 16:38:11,128 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:38:11,142 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:38:11,143 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:38:11,143 - DEBUG - Finished Request
+2026-01-18 16:38:13,154 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:38:13,168 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:38:13,168 - DEBUG - Remote response: status=200 | data={"value":259389} | headers=HTTPHeaderDict({'Content-Length': '16', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:38:13,169 - DEBUG - Finished Request
+2026-01-18 16:38:13,169 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:38:13,184 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:38:13,184 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:38:13,184 - DEBUG - Finished Request
+2026-01-18 16:38:15,186 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:38:15,197 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:38:15,198 - DEBUG - Remote response: status=200 | data={"value":259389} | headers=HTTPHeaderDict({'Content-Length': '16', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:38:15,198 - DEBUG - Finished Request
+2026-01-18 16:38:15,198 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight - 100', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:38:15,210 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:38:15,211 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:38:15,211 - DEBUG - Finished Request
+2026-01-18 16:38:16,216 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:38:16,271 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:38:16,271 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:38:16,271 - DEBUG - Finished Request
+2026-01-18 16:38:17,283 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:38:17,320 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:38:17,322 - DEBUG - Remote response: status=200 | data={"value":264679} | headers=HTTPHeaderDict({'Content-Length': '16', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:38:17,322 - DEBUG - Finished Request
+2026-01-18 16:38:17,322 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:38:17,367 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:38:17,368 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:38:17,368 - DEBUG - Finished Request
+2026-01-18 16:38:19,373 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:38:19,399 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:38:19,400 - DEBUG - Remote response: status=200 | data={"value":264679} | headers=HTTPHeaderDict({'Content-Length': '16', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:38:19,400 - DEBUG - Finished Request
+2026-01-18 16:38:19,401 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight - 100', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:38:19,429 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:38:19,429 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:38:19,430 - DEBUG - Finished Request
+2026-01-18 16:38:20,444 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:38:20,464 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:38:20,464 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:38:20,464 - DEBUG - Finished Request
+2026-01-18 16:38:21,474 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:38:21,589 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:38:21,589 - DEBUG - Remote response: status=200 | data={"value":270442} | headers=HTTPHeaderDict({'Content-Length': '16', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:38:21,589 - DEBUG - Finished Request
+2026-01-18 16:38:21,589 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:38:21,616 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:38:21,616 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:38:21,616 - DEBUG - Finished Request
+2026-01-18 16:38:23,626 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:38:23,643 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:38:23,643 - DEBUG - Remote response: status=200 | data={"value":270442} | headers=HTTPHeaderDict({'Content-Length': '16', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:38:23,644 - DEBUG - Finished Request
+2026-01-18 16:38:23,644 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight - 100', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:38:23,652 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:38:23,652 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:38:23,652 - DEBUG - Finished Request
+2026-01-18 16:38:24,655 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:38:25,149 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:38:25,149 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:38:25,149 - DEBUG - Finished Request
+2026-01-18 16:38:26,154 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:38:26,182 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:38:26,182 - DEBUG - Remote response: status=200 | data={"value":275644} | headers=HTTPHeaderDict({'Content-Length': '16', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:38:26,182 - DEBUG - Finished Request
+2026-01-18 16:38:26,182 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:38:26,203 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:38:26,204 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:38:26,204 - DEBUG - Finished Request
+2026-01-18 16:38:28,218 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:38:28,236 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:38:28,236 - DEBUG - Remote response: status=200 | data={"value":275644} | headers=HTTPHeaderDict({'Content-Length': '16', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:38:28,236 - DEBUG - Finished Request
+2026-01-18 16:38:28,236 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight - 100', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:38:28,252 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:38:28,252 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:38:28,252 - DEBUG - Finished Request
+2026-01-18 16:38:29,264 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'arguments[0].scrollTop = arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:38:29,287 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:38:29,287 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:38:29,288 - DEBUG - Finished Request
+2026-01-18 16:38:30,302 - DEBUG - POST http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/execute/sync {'script': 'return arguments[0].scrollHeight', 'args': [{'element-6066-11e4-a52e-4f735466cecf': 'f.ABE84E94B11F047B8529E54B0F5B26DE.d.68AEB72E41D2E4B921DCF7482877654A.e.648'}]}
+2026-01-18 16:38:30,330 - DEBUG - http://localhost:11998 "POST /session/3e722a2d690998b78546a3aeeccff92b/execute/sync HTTP/1.1" 200 0
+2026-01-18 16:38:30,330 - DEBUG - Remote response: status=200 | data={"value":275644} | headers=HTTPHeaderDict({'Content-Length': '16', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:38:30,330 - DEBUG - Finished Request
+2026-01-18 16:38:30,330 - DEBUG - GET http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b/source {}
+2026-01-18 16:38:30,791 - DEBUG - http://localhost:11998 "GET /session/3e722a2d690998b78546a3aeeccff92b/source HTTP/1.1" 200 0
+2026-01-18 16:38:32,937 - DEBUG - Finished Request
+2026-01-18 16:38:35,037 - INFO - Found 508 reviews.
+2026-01-18 16:38:35,141 - DEBUG - Looking up time zone info from registry
+2026-01-18 16:38:50,687 - DEBUG - DELETE http://localhost:11998/session/3e722a2d690998b78546a3aeeccff92b {}
+2026-01-18 16:38:50,832 - DEBUG - http://localhost:11998 "DELETE /session/3e722a2d690998b78546a3aeeccff92b HTTP/1.1" 200 0
+2026-01-18 16:38:50,832 - DEBUG - Remote response: status=200 | data={"value":null} | headers=HTTPHeaderDict({'Content-Length': '14', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-01-18 16:38:50,832 - DEBUG - Finished Request
+2026-01-18 16:38:53,526 - INFO - Saving scraped reviews to database...
+2026-01-18 16:38:53,555 - INFO - Successfully saved 508 reviews to D:\my_codes\YbigtaHW\YBIGTA_newbie_team_project\3(1)-Crawling,EDA,Visualization\database\google_reviews.csv
