@@ -148,7 +148,7 @@ class GoogleCrawler(BaseCrawler):
             if not os.path.exists(self.output_dir):
                 os.makedirs(self.output_dir)
 
-            output_file = os.path.join(self.output_dir, "google_reviews.csv")
+            output_file = os.path.join(self.output_dir, "reviews_google.csv")
             df.to_csv(output_file, index=False, encoding="utf-8-sig")
             logger.info(f"Successfully saved {len(df)} reviews to {output_file}")
             
