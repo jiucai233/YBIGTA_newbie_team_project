@@ -6,13 +6,13 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"
 from typing import Dict, Type
 from review_analysis.crawling.base_crawler import BaseCrawler
 from review_analysis.crawling.example_crawler import ExampleCrawler
-from review_analysis.crawling.google_crawler import GoogleCrawler
-# from review_analysis.crawling.kakao_crawler import KakaoCrawler
-# from review_analysis.crawling.naver_crawler import NaverCrawler
+#from review_analysis.crawling.google_crawler import GoogleCrawler
+from review_analysis.crawling.kakao_crawler import KakaoCrawler
+#from review_analysis.crawling.naver_crawler import NaverCrawler
 # 모든 크롤링 클래스를 예시 형식으로 적어주세요. 
 CRAWLER_CLASSES: Dict[str, Type[BaseCrawler]] = {
     "example": ExampleCrawler,
-    "google": GoogleCrawler,
+    "kakao": KakaoCrawler,
 }
 
 def create_parser() -> ArgumentParser:
