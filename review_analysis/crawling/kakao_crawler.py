@@ -47,6 +47,15 @@ class KakaoCrawler(BaseCrawler):
     
 
     def scrape_reviews(self):
+        """
+        카카오맵 장소 페이지에서 리뷰를 크롤링하는 메서드입니다.
+
+        - Selenium을 사용하여 브라우저를 실행합니다.
+        - 사진 탭으로 이동되는 문제를 방지하기 위해 후기(리뷰) 탭으로 강제 전환합니다.
+        - 스크롤을 통해 동적으로 로딩되는 리뷰를 반복적으로 수집합니다.
+        - 각 리뷰에서 별점(rating), 작성 날짜(date), 리뷰 내용(content)을 추출합니다.
+        - 중복 리뷰를 제거하여 일정 개수 이상의 리뷰를 self.reviews 리스트에 저장합니다.
+        """
         from selenium.webdriver.common.by import By
         from selenium.webdriver.support.ui import WebDriverWait
         from selenium.webdriver.support import expected_conditions as EC
