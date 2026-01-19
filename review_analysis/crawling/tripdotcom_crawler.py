@@ -153,6 +153,6 @@ class TripDotComCrawler(BaseCrawler):
             self.logger.warning("저장할 데이터가 없습니다.")
             return
         df = pd.DataFrame(self.data)
-        file_path = f"{self.output_dir}/reviews_trip_dot_com.csv"
+        file_path = f"{self.output_dir}/reviews_tripdotcom.csv"
         df.to_csv(file_path, index=False, encoding='utf-8-sig')
         self.logger.info(f"데이터 저장 완료: {file_path}")
