@@ -76,22 +76,34 @@ class GoogleCrawler(BaseCrawler):
 
                 last_height = self.driver.execute_script("return arguments[0].scrollHeight", scrollable_div)
                 
-                max_scrolls = 100 
-                # roughly scroll up to 100 times, 500 reviews, when the number gets larger, the review quanctity per scroll will decrease
-                # like 20 scrolls for 250 reviews, 100 scrolls for 500 reviews, the marginal increment decreases
-                for _ in range(max_scrolls):
+                max_scrolls = 100
+                last_height = self.driver.execute_script("return arguments[0].scrollHeight", scrollable_div)
+                no_change_count = 0 
+                MAX_RETRIES = 5  # by the number of reviews increases, the internet lags
+
+                for i in range(max_scrolls):
                     self.driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", scrollable_div)
-                    time.sleep(2)
+                    time.sleep(2) 
+
                     new_height = self.driver.execute_script("return arguments[0].scrollHeight", scrollable_div)
+
                     if new_height == last_height:
-                        self.driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight - 100", scrollable_div)
-                        time.sleep(1)
-                        self.driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", scrollable_div)
-                        time.sleep(1)
-                        new_height = self.driver.execute_script("return arguments[0].scrollHeight", scrollable_div)
-                        if new_height == last_height:
-                            break
-                    last_height = new_height
+                        no_change_count += 1
+
+                        if no_change_count >= 2:
+                            self.driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight - 300", scrollable_div)
+                            time.sleep(1)
+                            self.driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", scrollable_div)
+                            time.sleep(1.5)
+                            new_height = self.driver.execute_script("return arguments[0].scrollHeight", scrollable_div)
+
+                            if new_height != last_height:
+                                last_height = new_height
+                                no_change_count = 0
+                                continue 
+                    else:
+                        no_change_count = 0
+                        last_height = new_height
 
                 soup = BeautifulSoup(self.driver.page_source, "html.parser")
                 reviews = soup.find_all("div", class_="jftiEf")
