@@ -7,6 +7,7 @@ from typing import Dict, Type
 from review_analysis.preprocessing.base_processor import BaseDataProcessor
 from review_analysis.preprocessing.example_processor import ExampleProcessor
 from review_analysis.preprocessing.google_processor import GoogleProcessor
+from review_analysis.preprocessing.kakao_processor import KakaoProcessor
 from review_analysis.preprocessing.tripdotcom_processor import TripdotcomProcessor
 
 # 모든 preprocessing 클래스를 예시 형식으로 적어주세요. 
@@ -14,6 +15,7 @@ from review_analysis.preprocessing.tripdotcom_processor import TripdotcomProcess
 PREPROCESS_CLASSES: Dict[str, Type[BaseDataProcessor]] = {
     "reviews_example": ExampleProcessor,
     "reviews_google": GoogleProcessor,
+    "reviews_kakao": KakaoProcessor,
     "reviews_tripdotcom": TripdotcomProcessor,
     # key는 크롤링한 csv파일 이름으로 적어주세요! ex. reviews_naver.csv -> reviews_naver
 }
