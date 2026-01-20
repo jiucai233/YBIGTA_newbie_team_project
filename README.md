@@ -41,3 +41,28 @@ python review_analysis/crawling/main.py -c tripdotcom -o database
 2. 브라우저가 로딩되었다면 창에서 '리뷰' 목록이 보일 때까지 페이지를 아래로 스크롤합니다(혹은 상단의 '리뷰' 버튼 클릭).
 3. 리뷰 목록이 화면에 나왔다면 다시 터미널로 돌아와 Enter 키를 누릅니다.
 4. 프로그램이 크롤링을 시작합니다.
+
+## EDA Visualizer
+
+This project includes a script to generate Exploratory Data Analysis (EDA) visualizations from the preprocessed review data.
+
+### How to use
+
+To generate the visualizations, run the `eda_generator.py` script from the root directory with the path to the input CSV file as an argument.
+
+```bash
+python utils/eda_generator.py <path_to_input_csv>
+```
+
+For example, to generate visualizations for the preprocessed Trip.com reviews, run the following command:
+
+```bash
+python utils/eda_generator.py database/preprocessed_reviews_tripdotcom.csv
+```
+
+The script will generate the following plots in the `review_analysis/plot` directory:
+
+*   **Rating distribution:** A bar chart showing the distribution of ratings.
+*   **Content length distribution:** A histogram showing the distribution of review content lengths.
+*   **Reviews by month:** A bar chart showing the number of reviews per month.
+*   **Reviews by weekday:** A bar chart showing the number of reviews per weekday.

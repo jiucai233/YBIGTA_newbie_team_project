@@ -1,10 +1,27 @@
-2026-01-20 00:10:17,117 - INFO - TripdotcomProcessor ..\..\database\reviews_tripdotcom.csv에서 실행 중
-2026-01-20 00:10:17,118 - INFO - 전처리 시작...
-2026-01-20 00:10:17,129 - INFO - Successfully loaded 500 rows.
-2026-01-20 00:10:17,130 - INFO - 0개의 결측치 제거
-2026-01-20 00:10:17,131 - INFO - Removed 0 rows with invalid ratings.
-2026-01-20 00:10:17,137 - INFO - Text preprocessing completed.
-2026-01-20 00:10:17,137 - INFO - 파생 변수 생성 시작...
-2026-01-20 00:10:17,158 - INFO - Vectorization completed: Matrix shape (500, 100)
-2026-01-20 00:10:17,159 - INFO - Added columns: content_length, month, weekday.
-2026-01-20 00:10:17,164 - INFO - 성공적으로 저장됨: ../../database\preprocessed_reviews_tripdotcom.csv
+2026-01-20 21:50:34,545 - INFO - GoogleProcessor initialized with input: ..\..\database\reviews_google.csv
+2026-01-20 21:50:34,546 - INFO - Starting preprocessing...
+2026-01-20 21:50:34,600 - INFO - Loaded 668 rows from ..\..\database\reviews_google.csv
+2026-01-20 21:50:34,607 - INFO - Dropped 35 rows containing null values.
+2026-01-20 21:50:34,611 - INFO - Dropped 0 rows with abnormal star ratings.
+2026-01-20 21:50:34,626 - INFO - Text data preprocessing completed.
+2026-01-20 21:50:34,627 - INFO - Starting feature engineering...
+2026-01-20 21:50:34,632 - INFO - Generating TF-IDF embeddings...
+2026-01-20 21:50:34,671 - INFO - Generated TF-IDF embeddings with shape (633, 2314)
+2026-01-20 21:50:34,675 - INFO - Feature engineering completed. Added 'review_length' and 'is_positive'.
+2026-01-20 21:50:34,677 - INFO - Saving processed data...
+2026-01-20 21:50:34,690 - INFO - Successfully saved processed data to ../../database\preprocessed_reviews_google.csv
+2026-01-20 21:50:35,503 - INFO - Successfully saved TF-IDF embeddings to ../../database\reviews_google_tfidf_embeddings.csv
+2026-01-20 21:50:35,504 - INFO - KakaoProcessor initialized with input: ..\..\database\reviews_kakao.csv
+2026-01-20 21:50:35,506 - INFO - Starting preprocessing...
+2026-01-20 21:50:35,546 - INFO - Loaded 462 rows from ..\..\database\reviews_kakao.csv
+2026-01-20 21:50:35,566 - INFO - Dropped 0 rows with abnormal rating.
+2026-01-20 21:50:35,581 - INFO - Dropped 1 rows with too-short content.
+2026-01-20 21:50:35,594 - INFO - Dropped 0 duplicate rows.
+2026-01-20 21:50:35,596 - INFO - Preprocessing done. 462 -> 461 rows.
+2026-01-20 21:50:35,596 - INFO - Starting feature engineering...
+2026-01-20 21:50:35,599 - INFO - Feature engineering completed. Added 'review_length' and 'is_positive'.
+2026-01-20 21:50:35,600 - INFO - Saving processed data...
+2026-01-20 21:50:35,608 - INFO - Successfully saved processed data to ../../database\preprocessed_reviews_kakao.csv
+2026-01-20 21:50:35,652 - INFO - Successfully loaded 500 rows.
+2026-01-20 21:50:35,663 - INFO - Removed 0 rows with invalid ratings.
+2026-01-20 21:50:35,669 - INFO - Text preprocessing completed.
