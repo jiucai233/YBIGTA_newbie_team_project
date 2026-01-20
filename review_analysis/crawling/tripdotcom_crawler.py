@@ -3,8 +3,11 @@ import random
 import re
 import sys
 import pandas as pd
-import undetected_chromedriver as uc # type: ignore
 from typing import Any, Dict, List, Optional
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -12,36 +15,46 @@ from .base_crawler import BaseCrawler
 from utils.logger import setup_logger
 import logging
 
-# 불필요한 오류, 경고 메시지 출력 제한
-logging.getLogger('selenium').setLevel(logging.WARNING)
-logging.getLogger('urllib3').setLevel(logging.WARNING)
-logging.getLogger('undetected_chromedriver').setLevel(logging.WARNING)
+# 불필요한 오류 출력 제한
+# logging.getLogger('selenium').setLevel(logging.WARNING)
+# logging.getLogger('urllib3').setLevel(logging.WARNING)
 
 class TripDotComCrawler(BaseCrawler):
     def __init__(self, output_dir: str):
         super().__init__(output_dir)
         self.logger = setup_logger('trip_dot_com')
-        self.driver: Optional[uc.Chrome] = None
+        self.driver: Optional[webdriver.Chrome] = None
         self.data: List[Dict[str, str]] = []
         
-        # 윈도우 환경에서 이모티콘 깨짐 방지
+        # 윈도우 인코딩 설정
         if sys.platform == "win32":
-            stdout_any: Any = sys.stdout
             try:
-                sys.stdout.reconfigure(encoding='utf-8') # type: ignore
+                sys.stdout.reconfigure(encoding='utf-8')
             except AttributeError:
                 import io
-                sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding='utf-8', line_buffering=True) # type: ignore
+                sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding='utf-8', line_buffering=True)
 
     def start_browser(self):
         """
-        크롬 브라우저를 이용해 트립닷컴 사이트 실행
+        브라우저를 실행합니다.
         """
         self.logger.info("브라우저를 실행합니다.")
-        options = uc.ChromeOptions()
-        options.add_argument('--disable-blink-features=AutomationControlled')
-        options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36')
-        self.driver = uc.Chrome(options=options)
+        
+        chrome_options = Options()
+        # 자동화 제어 메시지 제거 및 감지 회피 설정
+        chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
+        chrome_options.add_experimental_option("useAutomationExtension", False)
+        chrome_options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36')
+        chrome_options.add_argument('--disable-gpu')
+        chrome_options.add_argument('--no-sandbox')
+        chrome_options.add_argument('--disable-dev-shm-usage')
+
+        # webdriver-manager를 통해 드라이버 자동 설치 및 서비스 설정
+        service = Service(ChromeDriverManager().install())
+        self.driver = webdriver.Chrome(service=service, options=chrome_options)
+        
+        # 브라우저 감지 회피를 위한 자바스크립트 실행
+        self.driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
         self.driver.maximize_window()
 
     def format_date(self, raw_date_str) -> str:
@@ -65,7 +78,7 @@ class TripDotComCrawler(BaseCrawler):
 
     def scrape_reviews(self):
         """
-        브라우저에서 리뷰 데이터를 수집합니다.
+        브라우저에서 리뷰 데이터를 자동으로 스크롤하여 수집합니다.
         """
         if self.driver is None:
             self.start_browser()
@@ -73,13 +86,32 @@ class TripDotComCrawler(BaseCrawler):
         url = "https://kr.trip.com/travel-guide/attraction/seoul/lotte-world-adventure-136469953/"
         self.driver.get(url)
         
-        print("\n" + "="*50)
-        print("브라우저에서 '리뷰' 목록이 보일 때까지 아래로 스크롤 하세요")
-        print("리뷰 목록이 보이면 터미널에서 Enter를 누르세요")
-        print("="*50 + "\n")
-        input() 
-
         wait = WebDriverWait(self.driver, 20)
+        
+        # --- 자동 스크롤 로직 추가 ---
+        self.logger.info("리뷰 섹션을 찾는 중입니다... 자동으로 스크롤합니다.")
+        found_reviews = False
+        max_attempts = 10  # 최대 스크롤 시도 횟수
+        
+        for i in range(max_attempts):
+            try:
+                # 리뷰 컨테이너가 있는지 확인 (이미 존재하면 스크롤 중단)
+                review_elements = self.driver.find_elements(By.CLASS_NAME, "gl-poi-detail_comment-content")
+                if len(review_elements) > 0:
+                    self.logger.info("리뷰 섹션을 발견했습니다.")
+                    found_reviews = True
+                    break
+                
+                # 리뷰가 없으면 아래로 1000픽셀씩 스크롤
+                self.driver.execute_script("window.scrollBy(0, 1000);")
+                self.logger.info(f"스크롤 중... ({i+1}/{max_attempts})")
+                time.sleep(1.5) # 로딩 대기
+            except Exception as e:
+                self.logger.warning(f"스크롤 중 알 수 없는 오류 발생: {e}")
+
+        if not found_reviews:
+            self.logger.error("리뷰 섹션을 찾지 못했습니다. 수집을 중단합니다.")
+            return
         
         while len(self.data) < 600:
             try:
