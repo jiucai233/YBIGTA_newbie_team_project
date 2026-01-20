@@ -1,7 +1,7 @@
 # @jiucai233
 from .base_processor import BaseDataProcessor
 from utils.logger import setup_logger
-from utils.tfidf import tfidf_embedding
+from sklearn.feature_extraction.text import TfidfVectorizer
 import pandas as pd
 import re
 import os
@@ -59,41 +59,26 @@ class GoogleProcessor(BaseDataProcessor):
 
         # 3. Text data preprocessing
         # Function to clean text
-        def clean_text(text):
-            if not isinstance(text, str):
-                return ""
-            # Remove Emojis
-            text = self.remove_emojis(text)
-            # Remove excessive whitespace
+        def clean_text(text) -> str:
+            """
+            리뷰 텍스트를 전처리합니다.
+            이모지 및 특수문자 제거 후 텍스트 벡터화를 진행합니다.
+
+            Args:
+                text (str): 원본 리뷰 텍스트
+
+            Returns:
+                str: 전처리된 리뷰 텍스트
+            """
+            if not isinstance(text, str): return ""
+            # 이모지 및 특수문자 제거, 한글/영문/숫자만 남김
+            text = re.sub(r'[^가-힣a-zA-Z0-9\s]', ' ', text)
+            # 연속된 공백 하나로 축소
             text = re.sub(r'\s+', ' ', text).strip()
-            # Optionally remove special characters if needed, 
-            # but for now we keep punctuation as it might be useful.
             return text
 
         self.df['review'] = self.df['review'].apply(clean_text)
         logger.info("Text data preprocessing completed.")
-
-    @staticmethod
-    def remove_emojis(text: str) -> str:
-        """
-        Removes emojis from a string.
-        """
-        if not isinstance(text, str):
-            return ""
-        
-        # Comprehensive regex to remove most emojis
-        emoji_pattern = re.compile(
-            "["
-            "\U0001F600-\U0001F64F"  # emoticons
-            "\U0001F300-\U0001F5FF"  # symbols & pictographs
-            "\U0001F680-\U0001F6FF"  # transport & map symbols
-            "\U0001F1E0-\U0001F1FF"  # flags (iOS)
-            "\U00002702-\U000027B0"
-            "\U000024C2-\U0001F251"
-            "]+",
-            flags=re.UNICODE
-        )
-        return emoji_pattern.sub(r'', text)
 
     def feature_engineering(self):
         """
@@ -116,7 +101,7 @@ class GoogleProcessor(BaseDataProcessor):
         self.generate_text_embeddings()
         logger.info("Feature engineering completed. Added 'review_length' and 'is_positive'.")
 
-    def generate_text_embeddings(self):
+    def generate_text_embeddings(self, max_features: int = 5000):
         """
         Generates TF-IDF embeddings for the review text.
         """
@@ -128,7 +113,12 @@ class GoogleProcessor(BaseDataProcessor):
         # Ensure all reviews are strings
         reviews = self.df['review'].astype(str).tolist()
         
-        self.tfidf_embeddings = tfidf_embedding(reviews)
+        vectorizer = TfidfVectorizer(max_features=max_features)
+        tfidf_matrix = vectorizer.fit_transform(reviews)
+        
+        # Create a DataFrame from the TF-IDF matrix
+        self.tfidf_embeddings = pd.DataFrame(tfidf_matrix.toarray(), columns=vectorizer.get_feature_names_out())
+        
         logger.info(f"Generated TF-IDF embeddings with shape {self.tfidf_embeddings.shape}")
 
     def save_to_database(self):
