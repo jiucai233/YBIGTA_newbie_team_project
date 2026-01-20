@@ -141,9 +141,9 @@ class GoogleProcessor(BaseDataProcessor):
         if not os.path.exists(self.output_dir):
             os.makedirs(self.output_dir)
 
-        # Append '_processed' to the filename
+        # Append 'preprocessed' to the filename
         base_name = os.path.splitext(os.path.basename(self.input_path))[0]
-        output_filename = f"{base_name}_processed.csv"
+        output_filename = f"preprocessed_{base_name}.csv"
         output_file = os.path.join(self.output_dir, output_filename)
 
         try:
