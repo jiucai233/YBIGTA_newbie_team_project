@@ -1,6 +1,7 @@
 # @jiucai233
 from .base_processor import BaseDataProcessor
 from utils.logger import setup_logger
+from utils.tfidf import tfidf_embedding
 import pandas as pd
 import re
 import os
@@ -13,6 +14,7 @@ class GoogleProcessor(BaseDataProcessor):
     def __init__(self, input_path: str, output_dir: str):
         super().__init__(input_path, output_dir)
         self.df = None
+        self.tfidf_embeddings = None
         logger.info(f"GoogleProcessor initialized with input: {input_path}")
 
     def load_data(self):
@@ -60,6 +62,8 @@ class GoogleProcessor(BaseDataProcessor):
         def clean_text(text):
             if not isinstance(text, str):
                 return ""
+            # Remove Emojis
+            text = self.remove_emojis(text)
             # Remove excessive whitespace
             text = re.sub(r'\s+', ' ', text).strip()
             # Optionally remove special characters if needed, 
@@ -68,6 +72,28 @@ class GoogleProcessor(BaseDataProcessor):
 
         self.df['review'] = self.df['review'].apply(clean_text)
         logger.info("Text data preprocessing completed.")
+
+    @staticmethod
+    def remove_emojis(text: str) -> str:
+        """
+        Removes emojis from a string.
+        """
+        if not isinstance(text, str):
+            return ""
+        
+        # Comprehensive regex to remove most emojis
+        emoji_pattern = re.compile(
+            "["
+            "\U0001F600-\U0001F64F"  # emoticons
+            "\U0001F300-\U0001F5FF"  # symbols & pictographs
+            "\U0001F680-\U0001F6FF"  # transport & map symbols
+            "\U0001F1E0-\U0001F1FF"  # flags (iOS)
+            "\U00002702-\U000027B0"
+            "\U000024C2-\U0001F251"
+            "]+",
+            flags=re.UNICODE
+        )
+        return emoji_pattern.sub(r'', text)
 
     def feature_engineering(self):
         """
@@ -87,10 +113,26 @@ class GoogleProcessor(BaseDataProcessor):
         # 4-5 stars: Positive (1), 1-3 stars: Negative/Neutral (0) - simple heuristic
         self.df['is_positive'] = (self.df['stars'] >= 4).astype(int)
         
+        self.generate_text_embeddings()
         logger.info("Feature engineering completed. Added 'review_length' and 'is_positive'.")
 
+    def generate_text_embeddings(self):
+        """
+        Generates TF-IDF embeddings for the review text.
+        """
+        logger.info("Generating TF-IDF embeddings...")
+        if self.df is None or self.df.empty or 'review' not in self.df.columns:
+            logger.warning("DataFrame is empty or 'review' column is missing. Skipping TF-IDF generation.")
+            return
+
+        # Ensure all reviews are strings
+        reviews = self.df['review'].astype(str).tolist()
+        
+        self.tfidf_embeddings = tfidf_embedding(reviews)
+        logger.info(f"Generated TF-IDF embeddings with shape {self.tfidf_embeddings.shape}")
+
     def save_to_database(self):
-        """Saves the processed data to the output directory."""
+        """Saves the processed data and TF-IDF embeddings to the output directory."""
         logger.info("Saving processed data...")
         if self.df is None or self.df.empty:
             logger.warning("No data to save.")
@@ -109,3 +151,12 @@ class GoogleProcessor(BaseDataProcessor):
             logger.info(f"Successfully saved processed data to {output_file}")
         except Exception as e:
             logger.error(f"Failed to save processed data: {e}")
+
+        if self.tfidf_embeddings is not None:
+            tfidf_output_filename = f"{base_name}_tfidf_embeddings.csv"
+            tfidf_output_file = os.path.join(self.output_dir, tfidf_output_filename)
+            try:
+                self.tfidf_embeddings.to_csv(tfidf_output_file, index=False, encoding='utf-8-sig')
+                logger.info(f"Successfully saved TF-IDF embeddings to {tfidf_output_file}")
+            except Exception as e:
+                logger.error(f"Failed to save TF-IDF embeddings: {e}")
