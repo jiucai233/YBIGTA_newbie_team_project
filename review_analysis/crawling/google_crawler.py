@@ -79,7 +79,6 @@ class GoogleCrawler(BaseCrawler):
                 max_scrolls = 100
                 last_height = self.driver.execute_script("return arguments[0].scrollHeight", scrollable_div)
                 no_change_count = 0 
-                MAX_RETRIES = 5  # by the number of reviews increases, the internet lags
 
                 for i in range(max_scrolls):
                     self.driver.execute_script("arguments[0].scrollTop = arguments[0].scrollHeight", scrollable_div)
