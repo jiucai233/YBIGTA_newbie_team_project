@@ -85,6 +85,7 @@ class GoogleProcessor(BaseDataProcessor):
         Generates additional parameters:
         - review_length: Length of the review text.
         - is_positive: Boolean indicating if the review is positive (stars >= 4).
+        and also generates TF-IDF embeddings for the review text.
         """
         logger.info("Starting feature engineering...")
         if self.df is None or self.df.empty:
@@ -97,14 +98,8 @@ class GoogleProcessor(BaseDataProcessor):
         # Generate 'is_positive' (Binary sentiment based on stars)
         # 4-5 stars: Positive (1), 1-3 stars: Negative/Neutral (0) - simple heuristic
         self.df['is_positive'] = (self.df['stars'] >= 4).astype(int)
-        
-        self.generate_text_embeddings()
-        logger.info("Feature engineering completed. Added 'review_length' and 'is_positive'.")
 
-    def generate_text_embeddings(self, max_features: int = 5000):
-        """
-        Generates TF-IDF embeddings for the review text.
-        """
+        # Generate TF-IDF embeddings for the review text.
         logger.info("Generating TF-IDF embeddings...")
         if self.df is None or self.df.empty or 'review' not in self.df.columns:
             logger.warning("DataFrame is empty or 'review' column is missing. Skipping TF-IDF generation.")
@@ -112,14 +107,18 @@ class GoogleProcessor(BaseDataProcessor):
 
         # Ensure all reviews are strings
         reviews = self.df['review'].astype(str).tolist()
-        
-        vectorizer = TfidfVectorizer(max_features=max_features)
+
+        vectorizer = TfidfVectorizer(max_features=5000)
         tfidf_matrix = vectorizer.fit_transform(reviews)
-        
+
         # Create a DataFrame from the TF-IDF matrix
         self.tfidf_embeddings = pd.DataFrame(tfidf_matrix.toarray(), columns=vectorizer.get_feature_names_out())
-        
+
         logger.info(f"Generated TF-IDF embeddings with shape {self.tfidf_embeddings.shape}")
+        logger.info("Feature engineering completed. Added 'review_length' and 'is_positive'.")
+
+
+
 
     def save_to_database(self):
         """Saves the processed data and TF-IDF embeddings to the output directory."""
