@@ -16,4 +16,4 @@ def setup_logger(log_file='app.log'):
     logger.addHandler(file_handler)
     return logger
 
-logger = setup_logger()
+

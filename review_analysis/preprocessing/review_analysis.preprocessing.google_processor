@@ -1,0 +1,10 @@
+2026-01-20 00:10:17,117 - INFO - TripdotcomProcessor ..\..\database\reviews_tripdotcom.csv에서 실행 중
+2026-01-20 00:10:17,118 - INFO - 전처리 시작...
+2026-01-20 00:10:17,129 - INFO - Successfully loaded 500 rows.
+2026-01-20 00:10:17,130 - INFO - 0개의 결측치 제거
+2026-01-20 00:10:17,131 - INFO - Removed 0 rows with invalid ratings.
+2026-01-20 00:10:17,137 - INFO - Text preprocessing completed.
+2026-01-20 00:10:17,137 - INFO - 파생 변수 생성 시작...
+2026-01-20 00:10:17,158 - INFO - Vectorization completed: Matrix shape (500, 100)
+2026-01-20 00:10:17,159 - INFO - Added columns: content_length, month, weekday.
+2026-01-20 00:10:17,164 - INFO - 성공적으로 저장됨: ../../database\preprocessed_reviews_tripdotcom.csv
