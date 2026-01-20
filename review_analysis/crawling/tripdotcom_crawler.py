@@ -3,30 +3,25 @@ import random
 import re
 import sys
 import pandas as pd
-from typing import Any, Dict, List, Optional
+from typing import List, Dict, Optional
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
-from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from .base_crawler import BaseCrawler
 from utils.logger import setup_logger
-import logging
 
-# 불필요한 오류 출력 제한
-# logging.getLogger('selenium').setLevel(logging.WARNING)
-# logging.getLogger('urllib3').setLevel(logging.WARNING)
+logger = setup_logger('trip_dot_com')
 
 class TripDotComCrawler(BaseCrawler):
     def __init__(self, output_dir: str):
         super().__init__(output_dir)
-        self.logger = setup_logger('trip_dot_com')
+        self.logger = logger
         self.driver: Optional[webdriver.Chrome] = None
         self.data: List[Dict[str, str]] = []
         
-        # 윈도우 인코딩 설정
+        # 윈도우 인코딩 설정 유지
         if sys.platform == "win32":
             try:
                 sys.stdout.reconfigure(encoding='utf-8')
@@ -36,26 +31,29 @@ class TripDotComCrawler(BaseCrawler):
 
     def start_browser(self):
         """
-        브라우저를 실행합니다.
+        브라우저를 실행합니다
         """
-        self.logger.info("브라우저를 실행합니다.")
+        logger.info("브라우저를 실행합니다.")
+        options = Options()
+        # GoogleCrawler에서 사용한 표준 안정화 옵션 적용
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-dev-shm-usage")
+        options.add_argument("--disable-gpu")
         
-        chrome_options = Options()
-        # 자동화 제어 메시지 제거 및 감지 회피 설정
-        chrome_options.add_experimental_option("excludeSwitches", ["enable-automation"])
-        chrome_options.add_experimental_option("useAutomationExtension", False)
-        chrome_options.add_argument('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36')
-        chrome_options.add_argument('--disable-gpu')
-        chrome_options.add_argument('--no-sandbox')
-        chrome_options.add_argument('--disable-dev-shm-usage')
-
-        # webdriver-manager를 통해 드라이버 자동 설치 및 서비스 설정
-        service = Service(ChromeDriverManager().install())
-        self.driver = webdriver.Chrome(service=service, options=chrome_options)
-        
-        # 브라우저 감지 회피를 위한 자바스크립트 실행
-        self.driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
-        self.driver.maximize_window()
+        try:
+            self.driver = webdriver.Chrome(options=options)
+            
+            # 브라우저 감지 회피 자바스크립트
+            self.driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+            
+            # 대기 시간 설정
+            self.driver.implicitly_wait(10)
+            self.driver.maximize_window()
+            logger.info("브라우저 초기화 완료.")
+            
+        except Exception as e:
+            logger.error(f"브라우저 실행 실패: {e}")
+            raise
 
     def format_date(self, raw_date_str) -> str:
         """

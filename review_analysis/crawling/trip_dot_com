@@ -1,0 +1,8 @@
+2026-01-20 21:47:04,294 - DEBUG - created a temporary folder in which the user-data (profile) will be stored during this
+session, and added it to chrome startup arguments: --user-data-dir=C:\Users\ANORMA~1\AppData\Local\Temp\tmpnn518eh3
+2026-01-20 21:47:04,297 - DEBUG - checking if C:\Program Files\Google/Chrome/Application\chrome.exe exists and is executable
+2026-01-20 21:47:04,298 - DEBUG - found! using C:\Program Files\Google/Chrome/Application\chrome.exe
+2026-01-20 21:47:04,299 - DEBUG - did not find a bad exit_type flag 
+2026-01-20 21:48:09,489 - DEBUG - webdriver process ended
+2026-01-20 21:48:09,499 - DEBUG - successfully removed C:\Users\ANORMA~1\AppData\Local\Temp\tmpnn518eh3
+2026-01-20 21:48:09,666 - INFO - ensuring close
