@@ -3,7 +3,7 @@ import random
 import re
 import sys
 import pandas as pd
-from typing import List, Dict, Optional
+from typing import List, Dict, Any, Optional
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
@@ -19,15 +19,15 @@ class TripDotComCrawler(BaseCrawler):
         super().__init__(output_dir)
         self.logger = logger
         self.driver: Optional[webdriver.Chrome] = None
-        self.data: List[Dict[str, str]] = []
+        self.data: List[Dict[str, Any]] = []
         
         # 윈도우 인코딩 설정 유지
         if sys.platform == "win32":
             try:
-                sys.stdout.reconfigure(encoding='utf-8')
+                sys.stdout.reconfigure(encoding='utf-8') # type: ignore
             except AttributeError:
                 import io
-                sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding='utf-8', line_buffering=True)
+                sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding='utf-8', line_buffering=True) # type: ignore
 
     def start_browser(self):
         """
