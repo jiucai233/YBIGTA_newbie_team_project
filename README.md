@@ -27,11 +27,41 @@ review and merge
 pip install -r requirements.txt
 ```
 
+### 크롤링
+```bash
+python -m review_analysis.crawling.main -o database --all
+```
+### EDA/FE
+```bash
+python -m review_analysis.preprocessing.main --output_dir database --all
+```
+
 ## 데이터 소개 
 서울 잠실동에 있는 놀이공원인 '롯데월드'의 리뷰를 세 사이트에서 크롤링 및 분석하고자 하였습니다.
+### 크롤링한 사이트 링크
+   - 구글맵: https://www.google.com/maps/place/Lotte+World/data=!4m12!1m2!2m1!1sLotte+World!3m8!1s0x357ca5a7250efe81:0x433df2c1fec03b98!8m2!3d37.5111158!4d127.098167!9m1!1b1!15sCgtMb3R0ZSBXb3JsZCIDiAEBWg0iC2xvdHRlIHdvcmxkkgEKdGhlbWVfcGFya-ABAA!16zL20vMDNqbGo5?hl=en&entry=ttu&g_ep=EgoyMDI2MDExMy4wIKXMDSoKLDEwMDc5MjA3M0gBUAM%3D  
+   - 카카오맵: https://place.map.kakao.com/27560699
+   - 트립닷컴: https://kr.trip.com/travel-guide/attraction/seoul/lotte-world-adventure-136469953/
+### 데이터 형식
+    - 사이트별 크롤링 결과를 각각의 csv 파일로 저장
+### 데이터 개수
+    - 구글맵: 776개
+    - 카카오맵: 661개
+    - 트립닷컴: 500개
 
-# 크롤링한 사이트 링크
+## 전처리/FE
 
+### 결측치
+   - `rating`, `review`, `date` 컬럼에서 결측치가 있는 행 제거
+### 이상치
+   - 별점이 1부터 5까지의 정수가 아닌 경우 데이터 제거  
+### 텍스트데이터 전처리
+   - 이모티콘 등과 같은 특수문자 제거 및 불필요한 공백 삭제  
+### 파생변수
+- 리뷰 길이
+- 긍정/부정 여부(별점이 4점 이상일 경우 긍정으로 분류)
+- 시계열분석을 위한 '월' 및 '요일' 변수
+### 텍스트 벡터화
 
 ## WEB homework usage guide
 
@@ -68,19 +98,4 @@ pip install -r requirements.txt
 python -m review_analysis.crawling.main -o . -c kakao
 ```
 
-### EDA: 개별 사이트에 대한 시각화 그래프 & 설명
-사이트별 별점 분포  
 
-트립닷컴
-![tripdotcom rate distribution](review_analysis\plot\preprocessed_reviews_tripdotcomrating_distribution.png)
-카카오
-![kakao rate distribution](review_analysis\plot\preprocessed_reviews_kakao_rating_distribution.png)
-구글
-![google rate distribution](review_analysis\plot\preprocessed_reviews_google_rating_distribution.png)
-
-### 전처리/FE: 각 크롤링 csv파일에 대해 진행한 결과 설명
-결측치: 결측치가 있는 행 제거  
-이상치: 별점이 1부터 5까지의 정수가 아닌 경우 데이터 제거  
-텍스트데이터 전처리: 이모티콘 등과 같은 특수문자 제거 및 불필요한 공백 삭제  
-파생변수: 리뷰 길이, 긍정/부정 여부(별점이 4점 이상일 경우 긍정으로 분류), 시계열분석을 위한 '월' 및 '요일' 변수  
-텍스트 벡터화: 
