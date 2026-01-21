@@ -18,11 +18,20 @@ rejected push request
 review and merge
 ![Getting Started](github/review_and_merged.png)
 
-## Prerequisites
+## 코드 실행 방법
 
+1. 터미널 또는 Powershell 열기
+2. 경로 설정 (YBIGTA_newbie_team_project 루트폴더)
+3. 필요한 패키지 설치
 ```bash
 pip install -r requirements.txt
 ```
+
+## 데이터 소개 
+서울 잠실동에 있는 놀이공원인 '롯데월드'의 리뷰를 세 사이트에서 크롤링 및 분석하고자 하였습니다.
+
+# 크롤링한 사이트 링크
+
 
 ## WEB homework usage guide
 
@@ -42,9 +51,8 @@ pip install -r requirements.txt
 ### 실행 방법
 
 1. 프로그램이 실행되면 브라우저가 자동으로 실행됩니다. 
-2. 브라우저가 로딩되었다면 창에서 '리뷰' 목록이 보일 때까지 페이지를 아래로 스크롤합니다(혹은 상단의 '리뷰' 버튼 클릭).
-3. 리뷰 목록이 화면에 나왔다면 다시 터미널로 돌아와 Enter 키를 누릅니다.
-4. 프로그램이 크롤링을 시작합니다.
+2. 브라우저가 로딩된 이후 자동으로 리뷰 부분까지 스크롤을 진행합니다.
+3. 리뷰 섹션을 발견했다면 크롤링을 시작합니다.
 
 ### 카카오맵 리뷰 데이터 소개 (Crawling)
 
@@ -59,3 +67,20 @@ pip install -r requirements.txt
 ```bash
 python -m review_analysis.crawling.main -o . -c kakao
 ```
+
+### EDA: 개별 사이트에 대한 시각화 그래프 & 설명
+사이트별 별점 분포  
+
+트립닷컴
+![tripdotcom rate distribution](review_analysis\plot\preprocessed_reviews_tripdotcomrating_distribution.png)
+카카오
+![kakao rate distribution](review_analysis\plot\preprocessed_reviews_kakao_rating_distribution.png)
+구글
+![google rate distribution](review_analysis\plot\preprocessed_reviews_google_rating_distribution.png)
+
+### 전처리/FE: 각 크롤링 csv파일에 대해 진행한 결과 설명
+결측치: 결측치가 있는 행 제거  
+이상치: 별점이 1부터 5까지의 정수가 아닌 경우 데이터 제거  
+텍스트데이터 전처리: 이모티콘 등과 같은 특수문자 제거 및 불필요한 공백 삭제  
+파생변수: 리뷰 길이, 긍정/부정 여부(별점이 4점 이상일 경우 긍정으로 분류), 시계열분석을 위한 '월' 및 '요일' 변수  
+텍스트 벡터화: 

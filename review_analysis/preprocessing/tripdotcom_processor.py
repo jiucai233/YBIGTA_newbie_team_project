@@ -92,12 +92,15 @@ class TripdotcomProcessor(BaseDataProcessor):
         # 요일 정보
         self.df['weekday'] = self.df['date'].dt.day_name()
 
-        # 텍스트 벡터화
-        # tfidf = TfidfVectorizer(max_features=100) 
-        # tfidf_matrix = tfidf.fit_transform(self.df['content'])
-        
-        # logger.info(f"Vectorization completed: Matrix shape {tfidf_matrix.shape}")
-        # logger.info("Added columns: content_length, month, weekday.")
+        contents = self.df['content'].astype(str).tolist()
+
+        vectorizer = TfidfVectorizer(max_features=5000)
+        tfidf_matrix = vectorizer.fit_transform(contents)
+
+        # Create a DataFrame from the TF-IDF matrix
+        self.tfidf_embeddings = pd.DataFrame(tfidf_matrix.toarray(), columns=vectorizer.get_feature_names_out())
+
+        logger.info(f"Generated TF-IDF embeddings with shape {self.tfidf_embeddings.shape}")
 
     def save_to_database(self):
         """
