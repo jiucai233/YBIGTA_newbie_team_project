@@ -115,7 +115,7 @@ class GoogleCrawler(BaseCrawler):
                         stars = 0.0
                         if star_elem and star_elem.has_attr("aria-label"):
                             label = star_elem["aria-label"]
-                            match = re.search(r"(\d+(\.\d+)?)", label)
+                            match = re.search(r"(\d+(\.\d+)?)", str(label))
                             if match:
                                 stars = float(match.group(1))
 
