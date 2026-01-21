@@ -105,7 +105,7 @@ class KakaoProcessor(BaseDataProcessor):
     def feature_engineering(self):
         """
         Generates additional parameters:
-        - review_length: length of review text
+        - content_length: length of review text
         - is_positive: 1 if rating >= 4 else 0
         """
         logger.info("Starting feature engineering...")
@@ -113,10 +113,10 @@ class KakaoProcessor(BaseDataProcessor):
             logger.warning("DataFrame is empty. Skipping feature engineering.")
             return
 
-        self.df["review_length"] = self.df["content"].apply(len)
+        self.df["content_length"] = self.df["content"].apply(len)
         self.df["is_positive"] = (self.df["rating"] >= 4).astype(int)
 
-        logger.info("Feature engineering completed. Added 'review_length' and 'is_positive'.")
+        logger.info("Feature engineering completed. Added 'content_length' and 'is_positive'.")
 
     def save_to_database(self):
         """Saves the processed data to the output directory."""

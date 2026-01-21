@@ -9,7 +9,7 @@ import os
 logger = setup_logger(__name__)
 class GoogleProcessor(BaseDataProcessor):
     """
-    Processor for Google Maps reviews data.
+    Processor for Google Maps contents data.
     """
     def __init__(self, input_path: str, output_dir: str):
         super().__init__(input_path, output_dir)
@@ -48,13 +48,13 @@ class GoogleProcessor(BaseDataProcessor):
         initial_count = len(self.df)
 
         # 1. Null value process
-        self.df.dropna(subset=['review', 'stars', 'date'], inplace=True)
+        self.df.dropna(subset=['content', 'rating', 'date'], inplace=True)
         logger.info(f"Dropped {initial_count - len(self.df)} rows containing null values.")
         
         # 2. Abnormal value process
-        # Filter stars to be between 1 and 5
+        # Filter rating to be between 1 and 5
         before_abnormal = len(self.df)
-        self.df = self.df[(self.df['stars'] >= 1) & (self.df['stars'] <= 5)]
+        self.df = self.df[(self.df['rating'] >= 1) & (self.df['rating'] <= 5)]
         logger.info(f"Dropped {before_abnormal - len(self.df)} rows with abnormal star ratings.")
 
         # 3. Text data preprocessing
@@ -77,45 +77,45 @@ class GoogleProcessor(BaseDataProcessor):
             text = re.sub(r'\s+', ' ', text).strip()
             return text
 
-        self.df['review'] = self.df['review'].apply(clean_text)
+        self.df['content'] = self.df['content'].apply(clean_text)
         logger.info("Text data preprocessing completed.")
 
     def feature_engineering(self):
         """
         Generates additional parameters:
-        - review_length: Length of the review text.
-        - is_positive: Boolean indicating if the review is positive (stars >= 4).
-        and also generates TF-IDF embeddings for the review text.
+        - content_length: Length of the content text.
+        - is_positive: Boolean indicating if the content is positive (rating >= 4).
+        and also generates TF-IDF embeddings for the content text.
         """
         logger.info("Starting feature engineering...")
         if self.df is None or self.df.empty:
             logger.warning("DataFrame is empty. Skipping feature engineering.")
             return
 
-        # Generate 'review_length'
-        self.df['review_length'] = self.df['review'].apply(len)
+        # Generate 'content_length'
+        self.df['content_length'] = self.df['content'].apply(len)
         
-        # Generate 'is_positive' (Binary sentiment based on stars)
-        # 4-5 stars: Positive (1), 1-3 stars: Negative/Neutral (0) - simple heuristic
-        self.df['is_positive'] = (self.df['stars'] >= 4).astype(int)
+        # Generate 'is_positive' (Binary sentiment based on rating)
+        # 4-5 rating: Positive (1), 1-3 rating: Negative/Neutral (0) - simple heuristic
+        self.df['is_positive'] = (self.df['rating'] >= 4).astype(int)
 
-        # Generate TF-IDF embeddings for the review text.
+        # Generate TF-IDF embeddings for the content text.
         logger.info("Generating TF-IDF embeddings...")
-        if self.df is None or self.df.empty or 'review' not in self.df.columns:
-            logger.warning("DataFrame is empty or 'review' column is missing. Skipping TF-IDF generation.")
+        if self.df is None or self.df.empty or 'content' not in self.df.columns:
+            logger.warning("DataFrame is empty or 'content' column is missing. Skipping TF-IDF generation.")
             return
 
-        # Ensure all reviews are strings
-        reviews = self.df['review'].astype(str).tolist()
+        # Ensure all contents are strings
+        contents = self.df['content'].astype(str).tolist()
 
         vectorizer = TfidfVectorizer(max_features=5000)
-        tfidf_matrix = vectorizer.fit_transform(reviews)
+        tfidf_matrix = vectorizer.fit_transform(contents)
 
         # Create a DataFrame from the TF-IDF matrix
         self.tfidf_embeddings = pd.DataFrame(tfidf_matrix.toarray(), columns=vectorizer.get_feature_names_out())
 
         logger.info(f"Generated TF-IDF embeddings with shape {self.tfidf_embeddings.shape}")
-        logger.info("Feature engineering completed. Added 'review_length' and 'is_positive'.")
+        logger.info("Feature engineering completed. Added 'content_length' and 'is_positive'.")
 
 
 

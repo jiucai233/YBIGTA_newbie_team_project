@@ -129,9 +129,9 @@ class GoogleCrawler(BaseCrawler):
                         content = content_elem.text.strip() if content_elem else ""
                         
                         self.data.append({
-                            "stars": stars,
+                            "rating": stars,
                             "date": date,
-                            "review": content
+                            "content": content
                         })
                     except Exception as e:
                         logger.error(f"Error parsing a review: {e}")
