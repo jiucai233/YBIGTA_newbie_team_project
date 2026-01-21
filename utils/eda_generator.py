@@ -27,38 +27,38 @@ def main():
     # Plot 1: Rating distribution
     plt.figure(figsize=(10, 6))
     sns.countplot(x='rating', data=df)
-    plt.title('Distribution of Ratings')
+    plt.title(f'{base_name} Distribution of Ratings')
     plt.xlabel('Rating')
     plt.ylabel('Count')
-    plt.savefig(os.path.join(output_dir, f'{base_name}rating_distribution.png'))
+    plt.savefig(os.path.join(output_dir, f'{base_name}_rating_distribution.png'))
     plt.close()
 
     # Plot 2: Content length distribution
     plt.figure(figsize=(10, 6))
     sns.histplot(df['content_length'], bins=50, kde=True)
-    plt.title('Distribution of Review Content Length')
+    plt.title(f'{base_name} Distribution of Review Content Length')
     plt.xlabel('Content Length')
     plt.ylabel('Frequency')
-    plt.savefig(os.path.join(output_dir, f'{base_name}content_length_distribution.png'))
+    plt.savefig(os.path.join(output_dir, f'{base_name}_content_length_distribution.png'))
     plt.close()
     
     # Plot 3: Reviews by month
     plt.figure(figsize=(10, 6))
     sns.countplot(x='month', data=df.sort_values('month'))
-    plt.title('Number of Reviews by Month')
+    plt.title(f'{base_name} Number of Reviews by Month')
     plt.xlabel('Month')
     plt.ylabel('Count')
-    plt.savefig(os.path.join(output_dir, f'{base_name}reviews_by_month.png'))
+    plt.savefig(os.path.join(output_dir, f'{base_name}_reviews_by_month.png'))
     plt.close()
 
     # Plot 4: Reviews by weekday
     plt.figure(figsize=(10, 6))
     sns.countplot(x='weekday', data=df, order=['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'])
-    plt.title('Number of Reviews by Weekday')
+    plt.title(f'{base_name} Number of Reviews by Weekday')
     plt.xlabel('Weekday')
     plt.ylabel('Count')
     plt.xticks(rotation=45)
-    plt.savefig(os.path.join(output_dir, f'{base_name}reviews_by_weekday.png'))
+    plt.savefig(os.path.join(output_dir, f'{base_name}_reviews_by_weekday.png'))
     plt.close()
 
     print(f"EDA charts saved to '{output_dir}' directory.")
