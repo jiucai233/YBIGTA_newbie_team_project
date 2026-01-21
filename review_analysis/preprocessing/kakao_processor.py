@@ -1,26 +1,30 @@
 # @chu20-afk
+import os
+import re
+import pandas as pd
+
 from .base_processor import BaseDataProcessor
 from utils.logger import setup_logger
-import pandas as pd
-import re
-import os
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 logger = setup_logger(__name__)
 
 
 class KakaoProcessor(BaseDataProcessor):
     """
-    Processor for Kakao Map reviews data.
+    Kakao reviews processor.
 
-    Input CSV columns (expected):
-    - rating
-    - date
-    - content
+    Flow:
+    1) load_data(): CSV 로드
+    2) preprocess(): 결측치/이상치 제거 + 텍스트 전처리(이모지/특수문자 제거)
+    3) feature_engineering(): content_length, is_positive + TF-IDF 임베딩 생성
+    4) save_to_database(): preprocessed_{원본파일명}.csv 및 {원본파일명}_tfidf_embeddings.csv 저장
     """
 
     def __init__(self, input_path: str, output_dir: str):
         super().__init__(input_path, output_dir)
-        self.df: pd.DataFrame | None = None
+        self.df = None
+        self.tfidf_embeddings = None
         logger.info(f"KakaoProcessor initialized with input: {input_path}")
 
     def load_data(self):
@@ -38,102 +42,109 @@ class KakaoProcessor(BaseDataProcessor):
 
     def preprocess(self):
         """
-        Performs data cleaning:
-        1) Null value processing
-        2) Type normalization (rating/date)
-        3) Abnormal value processing
-        4) Text preprocessing (content)
-        5) Deduplication
+        데이터 정제:
+        1) 결측치 제거: content, rating, date 중 하나라도 없으면 제거
+        2) 이상치 제거: rating 1~5 범위 밖 제거
+        3) 텍스트 전처리: 이모지/특수문자 제거 후 공백 정리 (한글/영문/숫자/공백만 남김)
         """
-        logger.info("Starting preprocessing...")
+        logger.info("[Kakao] Starting preprocessing...")
         if self.df is None:
             self.load_data()
 
-        if self.df is None or self.df.empty:
-            logger.warning("DataFrame is empty. Skipping preprocessing.")
+        if self.df.empty:
+            logger.warning("[Kakao] DataFrame is empty. Skipping preprocessing.")
             return
 
-        # 0) 필요한 컬럼 존재 확인
-        required_cols = ["rating", "date", "content"]
-        missing = [c for c in required_cols if c not in self.df.columns]
-        if missing:
-            logger.error(f"Missing required columns: {missing}")
-            self.df = pd.DataFrame()
-            return
-
+        # 1) Null value processing
         initial_count = len(self.df)
+        self.df.dropna(subset=["content", "rating", "date"], inplace=True)
+        logger.info(f"[Kakao] Dropped {initial_count - len(self.df)} rows containing null values.")
 
-        # 1) Null/빈문자 처리
-        self.df = self.df.replace({"": pd.NA, "None": pd.NA, "none": pd.NA, "nan": pd.NA})
-        self.df.dropna(subset=required_cols, inplace=True)
-
-        # 2) 타입 정리: rating -> numeric, date -> datetime
-        self.df["rating"] = pd.to_numeric(self.df["rating"], errors="coerce")
-        self.df["date"] = pd.to_datetime(self.df["date"], errors="coerce")
-
-        # rating/date 변환 실패한 행 제거
-        self.df.dropna(subset=["rating", "date"], inplace=True)
-
-        # 3) 이상치 처리: rating 1~5만 유지
+        # 2) Abnormal value processing
         before_abnormal = len(self.df)
         self.df = self.df[(self.df["rating"] >= 1) & (self.df["rating"] <= 5)]
-        logger.info(f"Dropped {before_abnormal - len(self.df)} rows with abnormal rating.")
+        logger.info(f"[Kakao] Dropped {before_abnormal - len(self.df)} rows with abnormal star ratings.")
 
-        # 4) 텍스트 전처리(content)
-        def clean_text(text: object) -> str:
+        # 3) Text preprocessing (emoji/special chars remove)
+        def clean_text(text) -> str:
+            """
+            이모지/특수문자 제거 + 공백 정리
+            - 한글/영문/숫자/공백만 남김
+            """
             if not isinstance(text, str):
                 return ""
+            text = re.sub(r"[^가-힣a-zA-Z0-9\s]", " ", text)
             text = re.sub(r"\s+", " ", text).strip()
-            # 카카오 리뷰에서 종종 보이는 '... 더보기' 제거
-            text = text.replace("... 더보기", "").strip()
+            # '...더보기' 제거
+            text = re.sub(r"\.\.\.더보기", "", text).strip()
+
             return text
 
         self.df["content"] = self.df["content"].apply(clean_text)
-
-        # content가 너무 짧으면 제거(의미 없는/깨진 데이터 방지)
-        before_short = len(self.df)
-        self.df = self.df[self.df["content"].str.len() >= 2]
-        logger.info(f"Dropped {before_short - len(self.df)} rows with too-short content.")
-
-        # 5) 중복 제거(같은 날짜 + 같은 내용은 같은 리뷰로 간주)
-        before_dup = len(self.df)
-        self.df.drop_duplicates(subset=["date", "content"], inplace=True)
-        logger.info(f"Dropped {before_dup - len(self.df)} duplicate rows.")
-
-        logger.info(f"Preprocessing done. {initial_count} -> {len(self.df)} rows.")
+        logger.info("[Kakao] Text preprocessing completed.")
 
     def feature_engineering(self):
         """
-        Generates additional parameters:
-        - content_length: length of review text
-        - is_positive: 1 if rating >= 4 else 0
+        파생변수 + TF-IDF 임베딩 생성:
+        - content_length: content 길이
+        - is_positive: rating >= 4 이면 1, 아니면 0
+        - tfidf_embeddings: content 기반 TF-IDF 벡터
         """
-        logger.info("Starting feature engineering...")
+        logger.info("[Kakao] Starting feature engineering...")
         if self.df is None or self.df.empty:
-            logger.warning("DataFrame is empty. Skipping feature engineering.")
+            logger.warning("[Kakao] DataFrame is empty. Skipping feature engineering.")
             return
 
-        self.df["content_length"] = self.df["content"].apply(len)
+        # content_length
+        self.df["content_length"] = self.df["content"].astype(str).apply(len)
+
+        # is_positive
         self.df["is_positive"] = (self.df["rating"] >= 4).astype(int)
 
-        logger.info("Feature engineering completed. Added 'content_length' and 'is_positive'.")
-
-    def save_to_database(self):
-        """Saves the processed data to the output directory."""
-        logger.info("Saving processed data...")
-        if self.df is None or self.df.empty:
-            logger.warning("No data to save.")
+        # TF-IDF embeddings
+        logger.info("[Kakao] Generating TF-IDF embeddings...")
+        if "content" not in self.df.columns:
+            logger.warning("[Kakao] 'content' column is missing. Skipping TF-IDF generation.")
             return
 
-        if not os.path.exists(self.output_dir):
-            os.makedirs(self.output_dir)
+        contents = self.df["content"].astype(str).tolist()
+        vectorizer = TfidfVectorizer(max_features=5000)
+        tfidf_matrix = vectorizer.fit_transform(contents)
 
+        self.tfidf_embeddings = pd.DataFrame(
+            tfidf_matrix.toarray(),
+            columns=vectorizer.get_feature_names_out(),
+        )
+
+        logger.info(f"[Kakao] Generated TF-IDF embeddings with shape {self.tfidf_embeddings.shape}")
+        logger.info("[Kakao] Feature engineering completed. Added 'content_length' and 'is_positive'.")
+
+    def save_to_database(self):
+        """Saves processed CSV and (optional) TF-IDF embeddings CSV."""
+        logger.info("[Kakao] Saving processed data...")
+        if self.df is None or self.df.empty:
+            logger.warning("[Kakao] No data to save.")
+            return
+
+        os.makedirs(self.output_dir, exist_ok=True)
+
+        # preprocessed_{원본파일명}.csv
         base_name = os.path.splitext(os.path.basename(self.input_path))[0]
         output_filename = f"preprocessed_{base_name}.csv"
         output_file = os.path.join(self.output_dir, output_filename)
 
         try:
             self.df.to_csv(output_file, index=False, encoding="utf-8-sig")
-            logger.info(f"Successfully saved processed data to {output_file}")
+            logger.info(f"[Kakao] Successfully saved processed data to {output_file}")
         except Exception as e:
-            logger.error(f"Failed to save processed data: {e}")
+            logger.error(f"[Kakao] Failed to save processed data: {e}")
+
+        # TF-IDF 임베딩도 저장 (구글과 동일한 규칙)
+        if self.tfidf_embeddings is not None:
+            tfidf_output_filename = f"{base_name}_tfidf_embeddings.csv"
+            tfidf_output_file = os.path.join(self.output_dir, tfidf_output_filename)
+            try:
+                self.tfidf_embeddings.to_csv(tfidf_output_file, index=False, encoding="utf-8-sig")
+                logger.info(f"[Kakao] Successfully saved TF-IDF embeddings to {tfidf_output_file}")
+            except Exception as e:
+                logger.error(f"[Kakao] Failed to save TF-IDF embeddings: {e}")
