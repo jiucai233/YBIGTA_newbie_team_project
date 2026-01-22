@@ -86,8 +86,14 @@ python main.py --output_dir ../../database --all
 ![Getting started]()
 
 ### Google
-![Getting started](review_analysis/plots/preprocessed_reviews_google_rating_distribution.png)
 ![Getting started](review_analysis/plots/preprocessed_reviews_google_review_length_distribution.png)
+제공된 구글 리뷰 데이터는 20자에서 330자 사이의 분포를 보이며, 특히 150자와 230자 지점에서 정점을 형성하는 다봉형(Multimodal) 특성을 나타냅니다. 그중에서도 230자 구간의 빈도수가 120회를 상회하며 압도적으로 높게 나타나는데, 이는 해당 데이터셋에서 230자 내외의 리뷰가 가장 지배적인 비중을 차지하고 있음을 시사합니다.
+![Getting started](review_analysis/plots/reviews_google_tfidf_embeddings_pca_2d.png)
+
+![Getting started](review_analysis\plots\reviews_google_tfidf_embeddings_top_doc_freq.png)
+핵심 키워드: 'rides', 'park', 'place' 등 놀이공원 관련 단어가 높은 빈도로 등장하며, 'lotte', 'indoor', 'magic' 등을 통해 데이터의 출처가 롯데월드임을 알 수 있습니다.  
+분포 및 군집: PCA 분석 결과 설명력(3%)이 낮고 데이터가 중앙에 밀집되어 있어, 리뷰 간 어휘 유사성이 매우 높고 뚜렷한 특징 기반의 군집 분리는 관찰되지 않습니다.  
+결론: 전반적으로 230자 내외의 리뷰가 주류를 이루며 주제가 일관적이다
 
 
 
@@ -102,7 +108,7 @@ python main.py --output_dir ../../database --all
 전체 리뷰 중 해당 단어가 포함된 리뷰의 비율이 높은 상위 20개 단어를 추출한 그래프이다. '정말', '좋은', '너무', '즐거운'과 같이 감정을 나타내는 부사나 형용사가 상위권을 차지하고 있다. 또한, 롯데월드와 관련된 '실내', '놀이기구' 등의 키워드를 통해 데이터의 정체성을 파악할 수 있다.
 
 ## 비교분석
-*구글 데이터의 날짜가 "몇년 전"으로 보임을따라, 데이터를 처리하는 날짜를 기준으로 x년 전으로 이동하여 날짜 변수를 생성하였습니다
+*구글 데이터의 날짜가 "몇년 전"으로 보임을따라, 데이터를 처리하는 날짜를 기준으로 x년 전으로 이동하여 날짜 변수를 생성하였습니다, 따라서 시계열 분석 중에 구글 데이터는 추가하지 않았습니다
 ### 텍스트 분석
 ![Getting started](review_analysis/plots/comparison_content_length_distribution.png)
 ![Getting started](review_analysis/plots/comparison_rating_distribution.png)
