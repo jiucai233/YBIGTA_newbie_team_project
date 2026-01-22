@@ -29,7 +29,10 @@ review and merge
 pip install -r requirements.txt
 ```
 ## WEB 과제
-
+```bash
+# http://127.0.0.1:8000/docs 에서 API 확인
+uvicorn app.main:app --reload
+```
 ## 크롤링
 ```bash
 cd review_analysis/crawling
