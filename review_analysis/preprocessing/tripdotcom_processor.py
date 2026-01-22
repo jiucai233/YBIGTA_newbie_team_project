@@ -115,3 +115,12 @@ class TripdotcomProcessor(BaseDataProcessor):
             logger.info(f"성공적으로 저장됨: {output_file}")
         except Exception as e:
             logger.error(f"저장 실패: {e}")
+
+        if self.tfidf_embeddings is not None:
+            tfidf_output_filename = f"reviews_tripdotcom_tfidf_embeddings.csv"
+            tfidf_output_file = os.path.join(self.output_dir, tfidf_output_filename)
+            try:
+                self.tfidf_embeddings.to_csv(tfidf_output_file, index=False, encoding='utf-8-sig')
+                logger.info(f"Successfully saved TF-IDF embeddings to {tfidf_output_file}")
+            except Exception as e:
+                logger.error(f"Failed to save TF-IDF embeddings: {e}")
