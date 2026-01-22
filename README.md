@@ -43,7 +43,7 @@ python main.py --output_dir ../../database --all
 ```
 
 # 데이터 소개 
-서울 잠실동에 있는 놀이공원인 '롯데월드'의 리뷰를 세 사이트에서 크롤링 및 분석하고자 하였습니다.  
+서울 잠실동에 있는 놀이공원인 '롯데월드'의 리뷰를 세 사이트에서 크롤링 및 분석하고자 하였다. 
 #### 크롤링한 사이트 링크
    - 구글맵: https://www.google.com/maps/place/Lotte+World/data=!4m12!1m2!2m1!1sLotte+World!3m8!1s0x357ca5a7250efe81:0x433df2c1fec03b98!8m2!3d37.5111158!4d127.098167!9m1!1b1!15sCgtMb3R0ZSBXb3JsZCIDiAEBWg0iC2xvdHRlIHdvcmxkkgEKdGhlbWVfcGFya-ABAA!16zL20vMDNqbGo5?hl=en&entry=ttu&g_ep=EgoyMDI2MDExMy4wIKXMDSoKLDEwMDc5MjA3M0gBUAM%3D  
    - 카카오맵: https://place.map.kakao.com/27560699
@@ -63,41 +63,41 @@ python main.py --output_dir ../../database --all
 ### 텍스트데이터 전처리
    - 이모티콘 등과 같은 특수문자 제거 및 불필요한 공백 삭제  
 ### 파생변수
-- 리뷰 길이
-- 긍정/부정 여부(별점이 4점 이상일 경우 긍정으로 분류)
-- 시계열분석을 위한 '월' 및 '요일' 변수
+   - 리뷰 길이
+   - 긍정/부정 여부(별점이 4점 이상일 경우 긍정으로 분류)
+   - 시계열분석을 위한 '월' 및 '요일' 변수
 ### 텍스트 벡터화 (TF-IDF)
-   리뷰 텍스트를 TF-IDF 방식으로 벡터화하여 각 리뷰를 단어 가중치 벡터로 표현함. 이렇게 만든 TF-IDF 임베딩(embedding) CSV를 기반으로 
+   리뷰 텍스트를 TF-IDF 방식으로 벡터화하여 각 리뷰를 단어 가중치 벡터로 표현했다. 이렇게 만든 TF-IDF 임베딩(embedding) CSV를 기반으로 
    (1) 평균 TF-IDF가 큰 상위 단어, 
    (2) 문서 등장 비율이 큰 상위 단어를 시각화하고, 
-   (3) 벡터의 희소도(sparsity) 및 리뷰당 유효 단어 수 같은 기본 통계를 확인했음. 
-   또한 PCA 2차원 산점도로 임베딩 분포를 살펴보았고, 사이트가 2개 이상일 경우 사이트 간 단어집합 교집합/합집합 및 Jaccard 유사도, 공통 단어의 평균 TF-IDF 차이가 큰 단어들을 비교 분석함. 
+   (3) 벡터의 희소도(sparsity) 및 리뷰당 유효 단어 수 같은 기본 통계를 확인했다. 
+   또한 PCA 2차원 산점도로 임베딩 분포를 살펴보았고, 사이트가 2개 이상일 경우 사이트 간 단어집합 교집합/합집합 및 Jaccard 유사도, 공통 단어의 평균 TF-IDF 차이가 큰 단어들을 비교 분석했다. 
    결과(그래프 PNG)는 review_analysis/plots/에 저장했음.
 
 # 시각화 도표 및 설명
 ## EDA
 ### Kakao
 ![Getting Started](review_analysis/plots/preprocessed_reviews_kakao_rating_distribution.png)
-5점 평점이 250건 이상으로 압도적으로 많으며, 2점이 가장 적은 빈도를 보입니다. 데이터가 고득점에 집중된 **긍정적 편향(Positive Bias)**을 띠고 있어, 전반적인 서비스 만족도가 높음을 시사합니다.
+5점 평점이 250건 이상으로 압도적으로 많으며, 2점이 가장 적은 빈도를 보인다. 데이터가 고득점에 집중된 **긍정적 편향(Positive Bias)**을 띠고 있어, 전반적인 서비스 만족도가 높음을 시사한다.
 ### Google
 ![Getting Started](review_analysis/plots/preprocessed_reviews_google_rating_distribution.png)
-5점 평점이 250건 이상으로 압도적으로 많으며, 2점이 가장 적은 빈도를 보입니다. 데이터가 고득점에 집중된 **긍정적 편향(Positive Bias)**을 띠고 있어, 전반적인 서비스 만족도가 높음을 시사합니다.
+5점 평점이 250건 이상으로 압도적으로 많으며, 2점이 가장 적은 빈도를 보인다. 데이터가 고득점에 집중된 **긍정적 편향(Positive Bias)**을 띠고 있어, 전반적인 서비스 만족도가 높음을 시사한다.
 ### Tripdotcom
 ![Getting Started](review_analysis/plots/preprocessed_reviews_tripdotcomrating_distribution.png)
-두 데이터 모두 5점 만점이 압도적으로 많으며, 고득점에 치중된 **긍정적 편향(Positive Bias)**을 보이고 있습니다. 이는 전반적인 서비스 만족도가 매우 높음을 시사하며, 데이터 정리를 통해 시각화가 가능해진 상태를 잘 보여줍니다.
+두 데이터 모두 5점 만점이 압도적으로 많으며, 고득점에 치중된 **긍정적 편향(Positive Bias)**을 보이고 있다. 이는 전반적인 서비스 만족도가 매우 높음을 시사하며, 데이터 정리를 통해 시각화가 가능해진 상태를 잘 보여준다.
 
 ## 전처리/FE
 ### Kakao
 ![Getting started](review_analysis/plots/preprocessed_reviews_kakao_rating_distribution.png)
-5점 리뷰의 비중이 가장 높아 전반적으로 이용자의 만족도가 높고, 1점과 5점에 리뷰가 집중되는 양극화된 분포가 관찰됨.
+5점 리뷰의 비중이 가장 높아 전반적으로 이용자의 만족도가 높고, 1점과 5점에 리뷰가 집중되는 양극화된 분포가 관찰되었다.
 ![Getting started](review_analysis/plots/reviews_kakao_tfidf_embeddings_pca_2d.png)
-PCA 결과, 설명된 분산은 2% 뿐이고 이는 텍스트 정보가 고차원에 분산되어 있음을 의미함.
-점들이 왼쪽에 몰려있고, 일부만 멀리 튀어나옴. 대부분의 리뷰가 비슷한 단어 조합이고, 소수의 리뷰만 다른 단어를 사용함을 의미함.
+PCA 결과, 설명된 분산은 2% 뿐이고 이는 텍스트 정보가 고차원에 분산되어 있음을 의미한다.
+점들이 왼쪽에 몰려있고, 일부만 멀리 튀어나왔다. 대부분의 리뷰가 비슷한 단어 조합이고, 소수의 리뷰만 다른 단어를 사용함을 의미한다.
 ![Getting started](review_analysis/plots/reviews_kakao_tfidf_embeddings_top_doc_freq.png)
-Doc frequency 상위 단어들은 ‘너무’, ‘좋아요’, ‘사람’ 등 많은 리뷰에서 반복되는 일반적인 감정 및 구어 표현임. 플랫폼 특성을 반영한 공통 키워드로 볼 수 있음.
-플랫폼 특성을 반영한 공통 키워드임.
+Doc frequency 상위 단어들은 ‘너무’, ‘좋아요’, ‘사람’ 등 많은 리뷰에서 반복되는 일반적인 감정 및 구어 표현이다. 플랫폼 특성을 반영한 공통 키워드로 볼 수 있다.
+플랫폼 특성을 반영한 공통 키워드이다.
 ![Getting started](review_analysis/plots/reviews_kakao_tfidf_embeddings_top_mean_tfidf.png)
-Mean TF-IDF 기준 상위 단어들은 ‘롯데월드’, ‘매직패스’, ‘놀이기구’ 등 리뷰의 핵심 경험과 직접적으로 연결된 단어들로, 카카오 리뷰의 주된 내용이 놀이공원 체험임을 보여줌.
+Mean TF-IDF 기준 상위 단어들은 ‘롯데월드’, ‘매직패스’, ‘놀이기구’ 등 리뷰의 핵심 경험과 직접적으로 연결된 단어들로, 카카오 리뷰의 주된 내용이 놀이공원 체험임을 보여준다.
 
 ### Google
 ![Getting started](review_analysis/plots/preprocessed_reviews_google_rating_distribution.png)
