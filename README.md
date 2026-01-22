@@ -71,13 +71,13 @@ python main.py --output_dir ../../database --all
 # 시각화 도표 및 설명
 ## EDA
 ### Kakao
-![Getting Started](review_analysis\plots\preprocessed_reviews_kakao_rating_distribution.png)
+![Getting Started](review_analysis/plots/preprocessed_reviews_kakao_rating_distribution.png)
 5점 평점이 250건 이상으로 압도적으로 많으며, 2점이 가장 적은 빈도를 보입니다. 데이터가 고득점에 집중된 **긍정적 편향(Positive Bias)**을 띠고 있어, 전반적인 서비스 만족도가 높음을 시사합니다.
 ### Google
-![Getting Started](review_analysis\plots\preprocessed_reviews_google_rating_distribution.png)
+![Getting Started](review_analysis/plots/preprocessed_reviews_google_rating_distribution.png)
 5점 평점이 250건 이상으로 압도적으로 많으며, 2점이 가장 적은 빈도를 보입니다. 데이터가 고득점에 집중된 **긍정적 편향(Positive Bias)**을 띠고 있어, 전반적인 서비스 만족도가 높음을 시사합니다.
 ### Tripdotcom
-![Getting Started](review_analysis\plots\preprocessed_reviews_tripdotcomrating_distribution.png)
+![Getting Started](review_analysis/plots/preprocessed_reviews_tripdotcomrating_distribution.png)
 두 데이터 모두 5점 만점이 압도적으로 많으며, 고득점에 치중된 **긍정적 편향(Positive Bias)**을 보이고 있습니다. 이는 전반적인 서비스 만족도가 매우 높음을 시사하며, 데이터 정리를 통해 시각화가 가능해진 상태를 잘 보여줍니다.
 
 ## 전처리/FE
@@ -86,18 +86,24 @@ python main.py --output_dir ../../database --all
 ![Getting started]()
 
 ### Google
-![Getting started]()
-![Getting started]()
+![Getting started](review_analysis/plots/preprocessed_reviews_google_rating_distribution.png)
+![Getting started](review_analysis/plots/preprocessed_reviews_google_review_length_distribution.png)
 
 
 
 ### Tripdotcom
-![Getting started](review_analysis\plots\preprocessed_reviews_tripdotcomreview_length_distribution.png)
-![Getting started](review_analysis\plots\preprocessed_reviews_tripdotcomreviews_by_month.png)
-![Getting started](review_analysis\plots\preprocessed_reviews_tripdotcomreviews_by_weekday.png)
-![Getting started](review_analysis\plots\reviews_tripdotcom_tfidf_embeddings_top_doc_freq.png)
+![Getting started](review_analysis/plots/preprocessed_reviews_tripdotcomreview_length_distribution.png)
+![Getting started](review_analysis/plots/preprocessed_reviews_tripdotcomreviews_by_month.png)
+![Getting started](review_analysis/plots/preprocessed_reviews_tripdotcomreviews_by_weekday.png)
+![Getting started](review_analysis/plots/reviews_tripdotcom_tfidf_embeddings_top_doc_freq.png)
 ![Getting started]()
 ![Getting started]()
 
 ## 비교분석
-
+*구글 데이터의 날짜가 "몇년 전"으로 보임을따라, 데이터를 처리하는 날짜를 기준으로 x년 전으로 이동하여 날짜 변수를 생성하였습니다
+### 텍스트 분석
+![Getting started](review_analysis/plots/comparison_content_length_distribution.png)
+![Getting started](review_analysis/plots/comparison_rating_distribution.png)
+### 시계열 분석
+![Getting started](review_analysis/plots/comparison_reviews_by_month.png)
+![Getting started](review_analysis/plots/comparison_reviews_by_weekday.png)
