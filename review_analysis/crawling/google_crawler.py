@@ -9,11 +9,11 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
 from datetime import datetime
-import pandas as pd
+import pandas as pd # type: ignore
 import time
 import os
 import re
-import dateparser
+import dateparser # type: ignore
 
 logger = setup_logger(__name__)
 class GoogleCrawler(BaseCrawler):

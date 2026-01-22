@@ -56,42 +56,6 @@ The preprocessing steps include data cleaning, null value handling, and text pre
 
     *   **Run all preprocessors:**
         ```bash
-        python review_analysis/preprocessing/main.py -a
+        python review_analysis/preprocessing/main.py -a -o ../../database
         ```
 3.  The processed data will be saved as new CSV files (with the `preprocessed_` prefix) in the `database` directory. The TF-IDF embeddings will also be saved to separate CSV files.
-
-### EDA Generation
-
-The project includes two scripts for generating EDA plots and reports:
-
-*   `utils/eda_generator.py`: Generates plots for the preprocessed data.
-*   `utils/embedding_eda.py`: Generates plots and reports for the TF-IDF embeddings.
-
-#### How to run `eda_generator.py`
-
-1.  Execute the `eda_generator.py` script with the preprocessed CSV files as input.
-2.  You can generate plots for a single file or compare multiple files.
-
-    *   **Single file:**
-        ```bash
-        python utils/eda_generator.py database/preprocessed_reviews_google.csv --all
-        ```
-
-    *   **Multiple files (for comparison):**
-        ```bash
-        python utils/eda_generator.py database/preprocessed_reviews_google.csv database/preprocessed_reviews_kakao.csv --all
-        ```
-3.  The generated plots will be saved in the `review_analysis/plot` directory.
-
-#### How to run `embedding_eda.py`
-
-1.  Execute the `embedding_eda.py` script with the TF-IDF embedding CSV files as input.
-
-    ```bash
-    python utils/embedding_eda.py database/reviews_google_tfidf_embeddings.csv database/reviews_kakao_tfidf_embeddings.csv
-    ```
-2.  The generated plots and a text report will be saved in the `review_analysis/plot` directory.
-
-## Appendix (additional info)
-
-This project is a good example of a full data analysis pipeline, from data crawling and preprocessing to feature engineering and exploratory data analysis. The web application provides a simple interface for user management, which could be extended to serve the results of the review analysis.
