@@ -66,7 +66,13 @@ python main.py --output_dir ../../database --all
 - 리뷰 길이
 - 긍정/부정 여부(별점이 4점 이상일 경우 긍정으로 분류)
 - 시계열분석을 위한 '월' 및 '요일' 변수
-### 텍스트 벡터화
+### 텍스트 벡터화 (TF-IDF)
+   리뷰 텍스트를 TF-IDF 방식으로 벡터화하여 각 리뷰를 단어 가중치 벡터로 표현함. 이렇게 만든 TF-IDF 임베딩(embedding) CSV를 기반으로 
+   (1) 평균 TF-IDF가 큰 상위 단어, 
+   (2) 문서 등장 비율이 큰 상위 단어를 시각화하고, 
+   (3) 벡터의 희소도(sparsity) 및 리뷰당 유효 단어 수 같은 기본 통계를 확인했음. 
+   또한 PCA 2차원 산점도로 임베딩 분포를 살펴보았고, 사이트가 2개 이상일 경우 사이트 간 단어집합 교집합/합집합 및 Jaccard 유사도, 공통 단어의 평균 TF-IDF 차이가 큰 단어들을 비교 분석함. 
+   결과(그래프 PNG)는 review_analysis/plots/에 저장했음.
 
 # 시각화 도표 및 설명
 ## EDA
@@ -82,8 +88,16 @@ python main.py --output_dir ../../database --all
 
 ## 전처리/FE
 ### Kakao
-![Getting started]()
-![Getting started]()
+![Getting started](review_analysis/plots/preprocessed_reviews_kakao_rating_distribution.png)
+5점 리뷰의 비중이 가장 높아 전반적으로 이용자의 만족도가 높고, 1점과 5점에 리뷰가 집중되는 양극화된 분포가 관찰됨.
+![Getting started](review_analysis/plots/reviews_kakao_tfidf_embeddings_pca_2d.png)
+PCA 결과, 설명된 분산은 2% 뿐이고 이는 텍스트 정보가 고차원에 분산되어 있음을 의미함.
+점들이 왼쪽에 몰려있고, 일부만 멀리 튀어나옴. 대부분의 리뷰가 비슷한 단어 조합이고, 소수의 리뷰만 다른 단어를 사용함을 의미함.
+![Getting started](review_analysis/plots/reviews_kakao_tfidf_embeddings_top_doc_freq.png)
+Doc frequency 상위 단어들은 ‘너무’, ‘좋아요’, ‘사람’ 등 많은 리뷰에서 반복되는 일반적인 감정 및 구어 표현임. 플랫폼 특성을 반영한 공통 키워드로 볼 수 있음.
+플랫폼 특성을 반영한 공통 키워드임.
+![Getting started](review_analysis/plots/reviews_kakao_tfidf_embeddings_top_mean_tfidf.png)
+Mean TF-IDF 기준 상위 단어들은 ‘롯데월드’, ‘매직패스’, ‘놀이기구’ 등 리뷰의 핵심 경험과 직접적으로 연결된 단어들로, 카카오 리뷰의 주된 내용이 놀이공원 체험임을 보여줌.
 
 ### Google
 ![Getting started](review_analysis/plots/preprocessed_reviews_google_rating_distribution.png)
