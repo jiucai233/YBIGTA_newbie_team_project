@@ -100,6 +100,15 @@ class KakaoProcessor(BaseDataProcessor):
         # is_positive
         self.df["is_positive"] = (self.df["rating"] >= 4).astype(int)
 
+        self.df['date'] = pd.to_datetime(self.df['date'])
+        
+        # 월 추출
+        self.df['month'] = self.df['date'].dt.month
+
+        # 요일 정보
+        self.df['weekday'] = self.df['date'].dt.day_name()
+
+
         # TF-IDF embeddings
         logger.info("[Kakao] Generating TF-IDF embeddings...")
         if "content" not in self.df.columns:

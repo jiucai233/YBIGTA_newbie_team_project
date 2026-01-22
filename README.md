@@ -86,8 +86,8 @@ python main.py --output_dir ../../database --all
 ![Getting started]()
 
 ### Google
-![Getting started]()
-![Getting started]()
+![Getting started](review_analysis/plots/preprocessed_reviews_google_rating_distribution.png)
+![Getting started](review_analysis/plots/preprocessed_reviews_google_review_length_distribution.png)
 
 
 
@@ -102,4 +102,10 @@ python main.py --output_dir ../../database --all
 전체 리뷰 중 해당 단어가 포함된 리뷰의 비율이 높은 상위 20개 단어를 추출한 그래프이다. '정말', '좋은', '너무', '즐거운'과 같이 감정을 나타내는 부사나 형용사가 상위권을 차지하고 있다. 또한, 롯데월드와 관련된 '실내', '놀이기구' 등의 키워드를 통해 데이터의 정체성을 파악할 수 있다.
 
 ## 비교분석
-
+*구글 데이터의 날짜가 "몇년 전"으로 보임을따라, 데이터를 처리하는 날짜를 기준으로 x년 전으로 이동하여 날짜 변수를 생성하였습니다
+### 텍스트 분석
+![Getting started](review_analysis/plots/comparison_content_length_distribution.png)
+![Getting started](review_analysis/plots/comparison_rating_distribution.png)
+### 시계열 분석
+![Getting started](review_analysis/plots/comparison_reviews_by_month.png)
+![Getting started](review_analysis/plots/comparison_reviews_by_weekday.png)
