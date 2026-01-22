@@ -125,7 +125,7 @@ def main():
             print(f"Error: Input file not found at {file_path}")
             return
 
-    output_dir = 'review_analysis/plot'
+    output_dir = 'review_analysis/plots'
     os.makedirs(output_dir, exist_ok=True)
 
     if len(args.input_files) == 1:
