@@ -81,13 +81,13 @@ python main.py --output_dir ../../database --all
 ## EDA
 ### Kakao
 ![Getting Started](review_analysis/plots/preprocessed_reviews_kakao_rating_distribution.png)
-5점 평점이 250건 이상으로 압도적으로 많으며, 2점이 가장 적은 빈도를 보인다. 데이터가 고득점에 집중된 긍정적 편향(Positive Bias)을 띠고 있어, 전반적인 서비스 만족도가 높음을 시사한다.
+5점 평점이 250건 이상으로 압도적으로 많으며, 2점이 가장 적은 빈도를 보인다. 데이터가 고득점에 집중되어 있으면서도 1점의 비율이 낮지 않다.
 ### Google
 ![Getting Started](review_analysis/plots/preprocessed_reviews_google_rating_distribution.png)
-5점 평점이 250건 이상으로 압도적으로 많으며, 2점이 가장 적은 빈도를 보인다. 데이터가 고득점에 집중된 긍정적 편향(Positive Bias)을 띠고 있어, 전반적인 서비스 만족도가 높음을 시사한다.
+5점 평점이 250건 이상으로 압도적으로 많으며, 2점이 가장 적은 빈도를 보인다. 4점 이상의 평점이 카카오에 비해 많아 긍정적인 리뷰가 상대적으로 많음을 볼 수 있다.
 ### Tripdotcom
 ![Getting Started](review_analysis/plots/preprocessed_reviews_tripdotcomrating_distribution.png)
-두 데이터 모두 5점 만점이 압도적으로 많으며, 고득점에 치중된 긍정적 편향(Positive Bias)을 보이고 있다. 이는 전반적인 서비스 만족도가 매우 높음을 시사하며, 데이터 정리를 통해 시각화가 가능해진 상태를 잘 보여준다.
+두 데이터에 비해 5점 만점이 압도적으로 많아 고득점에 치중된 긍정적 편향(Positive Bias)을 보이고 있다. 이는 전반적인 서비스 만족도가 매우 높음을 시사한다.
 
 ## 전처리/FE
 ### Kakao
