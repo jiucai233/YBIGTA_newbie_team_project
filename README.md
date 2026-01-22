@@ -90,7 +90,7 @@ python main.py --output_dir ../../database --all
 제공된 구글 리뷰 데이터는 20자에서 330자 사이의 분포를 보이며, 특히 150자와 230자 지점에서 정점을 형성하는 다봉형(Multimodal) 특성을 나타냅니다. 그중에서도 230자 구간의 빈도수가 120회를 상회하며 압도적으로 높게 나타나는데, 이는 해당 데이터셋에서 230자 내외의 리뷰가 가장 지배적인 비중을 차지하고 있음을 시사합니다.
 ![Getting started](review_analysis/plots/reviews_google_tfidf_embeddings_pca_2d.png)
 
-![Getting started](review_analysis\plots\reviews_google_tfidf_embeddings_top_doc_freq.png)
+![Getting started](review_analysis/plots/reviews_google_tfidf_embeddings_top_doc_freq.png)
 핵심 키워드: 'rides', 'park', 'place' 등 놀이공원 관련 단어가 높은 빈도로 등장하며, 'lotte', 'indoor', 'magic' 등을 통해 데이터의 출처가 롯데월드임을 알 수 있습니다.  
 분포 및 군집: PCA 분석 결과 설명력(3%)이 낮고 데이터가 중앙에 밀집되어 있어, 리뷰 간 어휘 유사성이 매우 높고 뚜렷한 특징 기반의 군집 분리는 관찰되지 않습니다.  
 결론: 전반적으로 230자 내외의 리뷰가 주류를 이루며 주제가 일관적이다
