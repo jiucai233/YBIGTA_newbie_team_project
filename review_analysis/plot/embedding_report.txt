@@ -1,9 +1,0 @@
-=== TF-IDF Embedding EDA Report ===
-
-[reviews_tripdotcom_tfidf_embeddings]
-  - n_docs: 500
-  - n_terms: 3150
-  - sparsity(zeros_ratio): 0.9951092063492063
-  - avg_nonzero_terms_per_doc: 15.406
-  - median_nonzero_terms_per_doc: 9.0
-

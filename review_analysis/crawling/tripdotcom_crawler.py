@@ -2,7 +2,7 @@ import time
 import random
 import re
 import sys
-import pandas as pd
+import pandas as pd # type: ignore
 from typing import List, Dict, Any, Optional
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options

@@ -1,9 +1,9 @@
 import os
-import pandas as pd
+import pandas as pd # type: ignore
 import re
 from .base_processor import BaseDataProcessor
 from utils.logger import setup_logger
-from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer # type: ignore
 
 logger = setup_logger(__name__)
 
