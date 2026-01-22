@@ -100,21 +100,29 @@ Doc frequency 상위 단어들은 ‘너무’, ‘좋아요’, ‘사람’ �
 Mean TF-IDF 기준 상위 단어들은 ‘롯데월드’, ‘매직패스’, ‘놀이기구’ 등 리뷰의 핵심 경험과 직접적으로 연결된 단어들로, 카카오 리뷰의 주된 내용이 놀이공원 체험임을 보여준다.
 
 ### Google
-![Getting started](review_analysis/plots/preprocessed_reviews_google_rating_distribution.png)
 ![Getting started](review_analysis/plots/preprocessed_reviews_google_review_length_distribution.png)
+제공된 구글 리뷰 데이터는 20자에서 330자 사이의 분포를 보이며, 특히 150자와 230자 지점에서 정점을 형성하는 다봉형(Multimodal) 특성을 나타냅니다. 그중에서도 230자 구간의 빈도수가 120회를 상회하며 압도적으로 높게 나타나는데, 이는 해당 데이터셋에서 230자 내외의 리뷰가 가장 지배적인 비중을 차지하고 있음을 시사합니다.
+![Getting started](review_analysis/plots/reviews_google_tfidf_embeddings_pca_2d.png)
+
+![Getting started](review_analysis\plots\reviews_google_tfidf_embeddings_top_doc_freq.png)
+핵심 키워드: 'rides', 'park', 'place' 등 놀이공원 관련 단어가 높은 빈도로 등장하며, 'lotte', 'indoor', 'magic' 등을 통해 데이터의 출처가 롯데월드임을 알 수 있습니다.  
+분포 및 군집: PCA 분석 결과 설명력(3%)이 낮고 데이터가 중앙에 밀집되어 있어, 리뷰 간 어휘 유사성이 매우 높고 뚜렷한 특징 기반의 군집 분리는 관찰되지 않습니다.  
+결론: 전반적으로 230자 내외의 리뷰가 주류를 이루며 주제가 일관적이다
 
 
 
 ### Tripdotcom
 ![Getting started](review_analysis/plots/preprocessed_reviews_tripdotcomreview_length_distribution.png)
+대부분의 리뷰가 0~50자 사이의 짧은 길이로 작성되었음을 알 수 있다. 사용자들이 주로 간결한 후기를 남기는 경향이 높음을 시사한다.
 ![Getting started](review_analysis/plots/preprocessed_reviews_tripdotcomreviews_by_month.png)
+월별 작성된 리뷰의 개수를 보았을 때, 8월에 리뷰 수가 가장 높으며 10월과 12월에도 비교적 높은 수치를 기록한다. 이를 통해 여름 휴가철이나 연말 시즌에 방문이 활발해지는 패턴을 보여준다.
 ![Getting started](review_analysis/plots/preprocessed_reviews_tripdotcomreviews_by_weekday.png)
+요일별 리뷰 등록 빈도를 비교했을 때, 비교적 월요일과 화요일에 리뷰가 가장 많이 등록된 것을 확인할 수 있다. 주말에 방문한 관람객들이 방문 직후인 주 초반에 후기를 남기는 사용자가 많음을 유추할 수 있다.
 ![Getting started](review_analysis/plots/reviews_tripdotcom_tfidf_embeddings_top_doc_freq.png)
-![Getting started]()
-![Getting started]()
+전체 리뷰 중 해당 단어가 포함된 리뷰의 비율이 높은 상위 20개 단어를 추출한 그래프이다. '정말', '좋은', '너무', '즐거운'과 같이 감정을 나타내는 부사나 형용사가 상위권을 차지하고 있다. 또한, 롯데월드와 관련된 '실내', '놀이기구' 등의 키워드를 통해 데이터의 정체성을 파악할 수 있다.
 
 ## 비교분석
-*구글 데이터의 날짜가 "몇년 전"으로 보임을따라, 데이터를 처리하는 날짜를 기준으로 x년 전으로 이동하여 날짜 변수를 생성하였습니다
+*구글 데이터의 날짜가 "몇년 전"으로 보임을따라, 데이터를 처리하는 날짜를 기준으로 x년 전으로 이동하여 날짜 변수를 생성하였습니다, 따라서 시계열 분석 중에 구글 데이터는 추가하지 않았습니다
 ### 텍스트 분석
 ![Getting started](review_analysis/plots/comparison_content_length_distribution.png)
 ![Getting started](review_analysis/plots/comparison_rating_distribution.png)

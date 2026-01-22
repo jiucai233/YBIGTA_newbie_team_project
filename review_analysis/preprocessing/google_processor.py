@@ -108,7 +108,7 @@ class GoogleProcessor(BaseDataProcessor):
         # Ensure all contents are strings
         contents = self.df['content'].astype(str).tolist()
 
-        vectorizer = TfidfVectorizer(max_features=5000)
+        vectorizer = TfidfVectorizer(max_features=5000,stop_words='english')
         tfidf_matrix = vectorizer.fit_transform(contents)
 
         # Create a DataFrame from the TF-IDF matrix

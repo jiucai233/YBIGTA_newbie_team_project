@@ -1,31 +1,31 @@
-2026-01-22 19:16:40,582 - INFO - GoogleProcessor initialized with input: ..\..\database\reviews_google.csv
-2026-01-22 19:16:40,584 - INFO - Starting preprocessing...
-2026-01-22 19:16:40,603 - INFO - Loaded 668 rows from ..\..\database\reviews_google.csv
-2026-01-22 19:16:40,609 - INFO - Dropped 35 rows containing null values.
-2026-01-22 19:16:40,612 - INFO - Dropped 0 rows with abnormal star ratings.
-2026-01-22 19:16:40,646 - INFO - Text data preprocessing completed.
-2026-01-22 19:16:40,648 - INFO - Starting feature engineering...
-2026-01-22 19:16:40,655 - INFO - Generating TF-IDF embeddings...
-2026-01-22 19:16:40,722 - INFO - Generated TF-IDF embeddings with shape (633, 2314)
-2026-01-22 19:16:40,724 - INFO - Feature engineering completed. Added 'content_length' and 'is_positive'.
-2026-01-22 19:16:40,725 - INFO - Saving processed data...
-2026-01-22 19:16:40,753 - INFO - Successfully saved processed data to ../../database\preprocessed_reviews_google.csv
-2026-01-22 19:16:42,177 - INFO - Successfully saved TF-IDF embeddings to ../../database\reviews_google_tfidf_embeddings.csv
-2026-01-22 19:16:42,179 - INFO - KakaoProcessor initialized with input: ..\..\database\reviews_kakao.csv
-2026-01-22 19:16:42,182 - INFO - [Kakao] Starting preprocessing...
-2026-01-22 19:16:42,192 - INFO - Loaded 462 rows from ..\..\database\reviews_kakao.csv
-2026-01-22 19:16:42,197 - INFO - [Kakao] Dropped 0 rows containing null values.
-2026-01-22 19:16:42,200 - INFO - [Kakao] Dropped 0 rows with abnormal star ratings.
-2026-01-22 19:16:42,219 - INFO - [Kakao] Text preprocessing completed.
-2026-01-22 19:16:42,220 - INFO - [Kakao] Starting feature engineering...
-2026-01-22 19:16:42,237 - INFO - [Kakao] Generating TF-IDF embeddings...
-2026-01-22 19:16:42,275 - INFO - [Kakao] Generated TF-IDF embeddings with shape (462, 2729)
-2026-01-22 19:16:42,277 - INFO - [Kakao] Feature engineering completed. Added 'content_length' and 'is_positive'.
-2026-01-22 19:16:42,279 - INFO - [Kakao] Saving processed data...
-2026-01-22 19:16:42,295 - INFO - [Kakao] Successfully saved processed data to ../../database\preprocessed_reviews_kakao.csv
-2026-01-22 19:16:43,248 - INFO - [Kakao] Successfully saved TF-IDF embeddings to ../../database\reviews_kakao_tfidf_embeddings.csv
-2026-01-22 19:16:43,282 - INFO - Successfully loaded 500 rows.
-2026-01-22 19:16:43,296 - INFO - Removed 0 rows with invalid ratings.
-2026-01-22 19:16:43,310 - INFO - Text preprocessing completed.
-2026-01-22 19:16:43,366 - INFO - Generated TF-IDF embeddings with shape (500, 3150)
-2026-01-22 19:16:44,657 - INFO - Successfully saved TF-IDF embeddings to ../../database\reviews_tripdotcom_tfidf_embeddings.csv
+2026-01-22 20:06:19,811 - INFO - GoogleProcessor initialized with input: ..\..\database\reviews_google.csv
+2026-01-22 20:06:19,813 - INFO - Starting preprocessing...
+2026-01-22 20:06:19,820 - INFO - Loaded 668 rows from ..\..\database\reviews_google.csv
+2026-01-22 20:06:19,823 - INFO - Dropped 35 rows containing null values.
+2026-01-22 20:06:19,825 - INFO - Dropped 0 rows with abnormal star ratings.
+2026-01-22 20:06:19,839 - INFO - Text data preprocessing completed.
+2026-01-22 20:06:19,841 - INFO - Starting feature engineering...
+2026-01-22 20:06:19,845 - INFO - Generating TF-IDF embeddings...
+2026-01-22 20:06:19,882 - INFO - Generated TF-IDF embeddings with shape (633, 2088)
+2026-01-22 20:06:19,884 - INFO - Feature engineering completed. Added 'content_length' and 'is_positive'.
+2026-01-22 20:06:19,885 - INFO - Saving processed data...
+2026-01-22 20:06:19,896 - INFO - Successfully saved processed data to ../../database\preprocessed_reviews_google.csv
+2026-01-22 20:06:20,879 - INFO - Successfully saved TF-IDF embeddings to ../../database\reviews_google_tfidf_embeddings.csv
+2026-01-22 20:06:20,881 - INFO - KakaoProcessor initialized with input: ..\..\database\reviews_kakao.csv
+2026-01-22 20:06:20,884 - INFO - [Kakao] Starting preprocessing...
+2026-01-22 20:06:20,893 - INFO - Loaded 462 rows from ..\..\database\reviews_kakao.csv
+2026-01-22 20:06:20,897 - INFO - [Kakao] Dropped 0 rows containing null values.
+2026-01-22 20:06:20,902 - INFO - [Kakao] Dropped 0 rows with abnormal star ratings.
+2026-01-22 20:06:20,917 - INFO - [Kakao] Text preprocessing completed.
+2026-01-22 20:06:20,919 - INFO - [Kakao] Starting feature engineering...
+2026-01-22 20:06:20,936 - INFO - [Kakao] Generating TF-IDF embeddings...
+2026-01-22 20:06:20,968 - INFO - [Kakao] Generated TF-IDF embeddings with shape (462, 2728)
+2026-01-22 20:06:20,969 - INFO - [Kakao] Feature engineering completed. Added 'content_length' and 'is_positive'.
+2026-01-22 20:06:20,970 - INFO - [Kakao] Saving processed data...
+2026-01-22 20:06:20,982 - INFO - [Kakao] Successfully saved processed data to ../../database\preprocessed_reviews_kakao.csv
+2026-01-22 20:06:21,895 - INFO - [Kakao] Successfully saved TF-IDF embeddings to ../../database\reviews_kakao_tfidf_embeddings.csv
+2026-01-22 20:06:21,929 - INFO - Successfully loaded 500 rows.
+2026-01-22 20:06:21,950 - INFO - Removed 0 rows with invalid ratings.
+2026-01-22 20:06:21,959 - INFO - Text preprocessing completed.
+2026-01-22 20:06:22,006 - INFO - Generated TF-IDF embeddings with shape (500, 3150)
+2026-01-22 20:06:22,873 - INFO - Successfully saved TF-IDF embeddings to ../../database\reviews_tripdotcom_tfidf_embeddings.csv

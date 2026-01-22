@@ -75,8 +75,8 @@ class KakaoProcessor(BaseDataProcessor):
             text = re.sub(r"[^가-힣a-zA-Z0-9\s]", " ", text)
             text = re.sub(r"\s+", " ", text).strip()
             # '...더보기' 제거
-            text = re.sub(r"\.\.\.더보기", "", text).strip()
-
+            pattern = r"[\.\s…\n\r\t]+더보기"
+            text = re.sub(pattern, "", text).strip()
             return text
 
         self.df["content"] = self.df["content"].apply(clean_text)
@@ -101,7 +101,7 @@ class KakaoProcessor(BaseDataProcessor):
         self.df["is_positive"] = (self.df["rating"] >= 4).astype(int)
 
         self.df['date'] = pd.to_datetime(self.df['date'])
-        
+
         # 월 추출
         self.df['month'] = self.df['date'].dt.month
 
