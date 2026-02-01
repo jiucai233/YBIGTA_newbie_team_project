@@ -1,0 +1,47 @@
+# ────────────── Git/CICD ──────────────
+.git
+.gitignore
+.github/
+
+# ────────────── OS/IDE 파일 ────────────
+.DS_Store
+
+# ────────────── Python bytecode ────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# ────────────── Virtual Environments ───
+.env
+.env.*
+env/
+env.bak/
+venv/
+venv.bak/
+.venv/
+ENV/
+.Python
+
+# ────────────── Test & Coverage ────────
+test/
+.tox/
+.pytest_cache/
+nosetests.xml
+.coverage
+coverage.*
+*.cover
+
+# ────────────── Build Artifacts ────────
+build/
+dist/
+*.egg-info/
+
+# ────────────── Logs & Pip ─────────────
+*.log
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ────────────── 기타 캐시 ──────────────
+.cache
+.mypy_cache/
