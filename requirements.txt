@@ -52,3 +52,13 @@ pandas
 types-dateparser
 
 types-requests
+
+#DB
+sqlalchemy
+pymysql
+pymongo[srv]
+python-dotenv
+
+# Security & Connection
+cryptography
+pyopenssl
