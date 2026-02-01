@@ -5,7 +5,10 @@ import os
 
 from app.user.user_router import user
 from app.review.review_router import router as review_router
+from app.user.user_repository import Base
+from database.mysql_connection import engine
 
+Base.metadata.create_all(bind=engine)
 app = FastAPI()
 
 static_path = os.path.join(os.path.dirname(__file__), "static")
