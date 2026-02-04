@@ -5,7 +5,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build-and-push:
+  Build_and_Push_Docker_Image:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
@@ -24,8 +24,8 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/ybigta_newbie_team_project:latest
 
-  deploy:
-    needs: build-and-push
+  Deploy_to_EC2:
+    needs: Build_and_Push_Docker_Image
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to EC2
