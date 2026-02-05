@@ -37,7 +37,7 @@ jobs:
           script: |
 
             CONTAINER_NAME="ybigta_app"
-            IMAGE_NAME="${{ secrets.DOCKER_USERNAME }}/ybigta4th:v1.0" 
+            IMAGE_NAME="${{ secrets.DOCKER_USERNAME }}/ybigta_newbie_team_project:latest"
 
             docker stop $CONTAINER_NAME 2>/dev/null || true
             docker rm $CONTAINER_NAME 2>/dev/null || true
