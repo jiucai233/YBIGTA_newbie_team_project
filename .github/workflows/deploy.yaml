@@ -28,29 +28,31 @@ jobs:
     needs: Build_and_Push_Docker_Image
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy to EC2
+      - name: Deploy to EC2 via SSH
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USERNAME }}
-          key: ${{ secrets.EC2_KEY }}
+          host: ${{ secrets.EC2_HOST }}      
+          username: ${{ secrets.EC2_USERNAME }} 
+          key: ${{ secrets.EC2_KEY }}      
           script: |
+
             CONTAINER_NAME="ybigta_app"
-            IMAGE_NAME="${{ secrets.DOCKER_USERNAME }}/ybigta_newbie_team_project:latest"
-            
-            sudo docker stop $CONTAINER_NAME 2>/dev/null || true
-            sudo docker rm $CONTAINER_NAME 2>/dev/null || true
-            
-            sudo docker image prune -f
-            
-            sudo docker pull $IMAGE_NAME
-            
-            sudo docker run -d \
+            IMAGE_NAME="${{ secrets.DOCKER_USERNAME }}/ybigta4th:v1.0" 
+
+            docker stop $CONTAINER_NAME 2>/dev/null || true
+            docker rm $CONTAINER_NAME 2>/dev/null || true
+
+            docker image prune -af 
+
+            docker pull $IMAGE_NAME
+
+            docker run -d \
               --name $CONTAINER_NAME \
               --restart unless-stopped \
-              -p 8000:8000 \
+              -p 80:8000 \
               --env-file .env \
               $IMAGE_NAME
-            
+
             sleep 5
+
             sudo docker ps | grep $CONTAINER_NAME
