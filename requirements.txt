@@ -62,3 +62,8 @@ python-dotenv
 # Security & Connection
 cryptography
 pyopenssl
+
+# Langchain
+langchain
+langchain-anthropic
+langchain-upstage
