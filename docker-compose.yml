@@ -1,0 +1,20 @@
+#docker-compose.yml
+
+services:
+  ybigta-agent:
+    image: jiucai233/ybigta_newbie_team_project:latest
+    ports:
+      - "8501:8501" 
+    env_file: .env
+    command: streamlit run streamlit_app.py --server.port 8501 --server.address 0.0.0.0
+    depends_on:
+      - mcp-server
+    restart: always
+
+  mcp-server:
+    image: jiucai233/ybigta_newbie_team_project:latest
+    expose:
+      - "8000"
+    env_file: .env
+    command: python mcp_server.py
+    restart: always
