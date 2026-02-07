@@ -113,5 +113,4 @@ def extract_high_value_complaints(min_length: int = 100) -> str:
     return f"Found {len(critical_df)} detailed complaints. Top issues:\n\n{formatted_samples}"
 
 if __name__ == "__main__":
-
-    mcp.run(transport='sse')
+    mcp.run(transport='sse', host="0.0.0.0", port=8000)
