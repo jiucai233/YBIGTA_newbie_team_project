@@ -11,12 +11,26 @@ async def call_mcp_server(tool_name: str, tool_args: dict = None):
     if tool_args is None:
         tool_args = {}
     
-    url = f"http://{os.getenv('MCP_HOST', 'localhost')}:8000/sse"
-    async with sse_client(url) as streams:
-        async with ClientSession(streams[0], streams[1]) as session:
-            await session.initialize()
-            result = await session.call_tool(tool_name, arguments=tool_args)
-            return result.content[0].text
+    host = os.getenv('MCP_HOST', 'mcp-server')
+    url = f"http://{host}:8000/sse"
+    
+    print(f"--- Connecting to MCP Server at: {url} ---")
+    try:
+        async with sse_client(url) as streams:
+            async with ClientSession(streams[0], streams[1]) as session:
+                await session.initialize()
+                result = await session.call_tool(tool_name, arguments=tool_args)
+                return result.content[0].text
+    except Exception as e:
+        if host == 'mcp-server' and os.getenv('MCP_HOST') is None:
+            print("--- Retrying with localhost... ---")
+            url = "http://localhost:8000/sse"
+            async with sse_client(url) as streams:
+                async with ClientSession(streams[0], streams[1]) as session:
+                    await session.initialize()
+                    result = await session.call_tool(tool_name, arguments=tool_args)
+                    return result.content[0].text
+        raise e
 
 def mcp_node(state: GraphState) -> dict:
     """
