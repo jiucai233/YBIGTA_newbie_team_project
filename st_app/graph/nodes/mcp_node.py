@@ -4,13 +4,14 @@ from langchain_core.messages import HumanMessage
 from st_app.utils.state import GraphState
 from mcp import ClientSession
 from mcp.client.sse import sse_client
+import os
 
 async def call_mcp_server(tool_name: str, tool_args: dict = None):
     """Asynchronous function to call the MCP server over SSE."""
     if tool_args is None:
         tool_args = {}
     
-    url = "http://localhost:8000/sse"
+    url = f"http://{os.getenv('MCP_HOST', 'localhost')}:8000/sse"
     async with sse_client(url) as streams:
         async with ClientSession(streams[0], streams[1]) as session:
             await session.initialize()
