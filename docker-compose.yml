@@ -9,7 +9,7 @@ services:
     command: streamlit run streamlit_app.py --server.port 8501 --server.address 0.0.0.0
     volumes:
       - ./database:/app/database
-      - ./st_app/db
+      - ./st_app/db:/app/st_app/db
     depends_on:
       - mcp-server
     restart: always
@@ -21,6 +21,6 @@ services:
     env_file: .env
     volumes:
       - ./database:/app/database
-      - ./st_app/db
+      - ./st_app/db:/app/st_app/db
     command: python mcp_server.py
     restart: always
