@@ -66,5 +66,9 @@ pyopenssl
 # Langchain
 langchain
 langchain-openai
+langchain-community
 langgraph
 langchain-upstage
+
+# Vector store
+faiss-cpu
