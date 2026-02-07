@@ -10,6 +10,8 @@ services:
     volumes:
       - ./database:/app/database
       - ./st_app/db:/app/st_app/db
+    environment:
+      - MCP_HOST=mcp-server
     depends_on:
       - mcp-server
     restart: always
