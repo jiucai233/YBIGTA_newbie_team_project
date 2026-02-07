@@ -28,31 +28,30 @@ jobs:
     needs: Build_and_Push_Docker_Image
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy to EC2 via SSH
+      - name: Check out the repo
+        uses: actions/checkout@v3 
+
+      - name: Copy docker-compose.yml to EC2
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_KEY }}
+          source: "docker-compose.yml"
+          target: "~/"
+
+      - name: Deploy via SSH
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.EC2_HOST }}      
-          username: ${{ secrets.EC2_USERNAME }} 
-          key: ${{ secrets.EC2_KEY }}      
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_KEY }}
           script: |
+            docker-compose pull
 
-            CONTAINER_NAME="ybigta_app"
-            IMAGE_NAME="${{ secrets.DOCKER_USERNAME }}/ybigta_newbie_team_project:latest"
-
-            docker stop $CONTAINER_NAME 2>/dev/null || true
-            docker rm $CONTAINER_NAME 2>/dev/null || true
+            docker-compose up -d
 
             docker image prune -af 
 
-            docker pull $IMAGE_NAME
-
-            docker run -d \
-              --name $CONTAINER_NAME \
-              --restart unless-stopped \
-              -p 80:8000 \
-              --env-file .env \
-              $IMAGE_NAME
-
             sleep 5
-
-            sudo docker ps | grep $CONTAINER_NAME
+            docker ps | grep "8501"
