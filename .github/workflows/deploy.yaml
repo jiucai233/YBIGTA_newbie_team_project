@@ -47,9 +47,9 @@ jobs:
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_KEY }}
           script: |
-            docker-compose pull
+            docker compose pull
 
-            docker-compose up -d
+            docker compose up -d
 
             docker image prune -af 
 
