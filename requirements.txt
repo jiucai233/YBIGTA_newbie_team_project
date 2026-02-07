@@ -72,3 +72,4 @@ langchain-upstage
 
 # Vector store
 faiss-cpu
+mcp
