@@ -5,6 +5,10 @@ from st_app.utils.state import GraphState
 from mcp import ClientSession
 from mcp.client.sse import sse_client
 import os
+import streamlit as st
+
+MCP_SERVER_URL = st.secrets.get("MCP_SERVER_URL", 
+                                os.getenv("MCP_HOST", "http://mcp-server:8000/sse"))
 
 async def call_mcp_server(tool_name: str, tool_args: dict = None):
     """Asynchronous function to call the MCP server over SSE."""
@@ -12,7 +16,8 @@ async def call_mcp_server(tool_name: str, tool_args: dict = None):
         tool_args = {}
     
     host = os.getenv('MCP_HOST', 'mcp-server')
-    url = f"http://{host}:8000/sse"
+    # url = f"http://{host}:8000/sse"
+    url = MCP_SERVER_URL
     
     print(f"--- Connecting to MCP Server at: {url} ---")
     try:
