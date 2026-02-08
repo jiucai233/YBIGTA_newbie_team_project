@@ -18,7 +18,7 @@ def router(state: GraphState) -> str:
     This is a router that decides which node to go to next based on the user's input.
     Uses Upstage API (solar-mini) to classify the intent.
     """
-    print("---ROUTER---", flush=True)
+    print("---ROUTER---")
     user_input = state["user_input"]
     
     api_key = _get_api_key()
@@ -56,5 +56,5 @@ def router(state: GraphState) -> str:
     else:
         target = "chat_node"
 
-    print(f"---ROUTING TO {target.upper()}---", flush=True)
+    print(f"---ROUTING TO {target.upper()}---")
     return target

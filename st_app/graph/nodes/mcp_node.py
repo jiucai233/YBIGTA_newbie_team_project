@@ -7,31 +7,41 @@ from mcp.client.sse import sse_client
 import os
 import streamlit as st
 
+MCP_SERVER_URL = st.secrets.get("MCP_SERVER_URL", 
+                                os.getenv("MCP_HOST", "http://mcp-server:8000/sse"))
 
-async def call_mcp_server(tool_name: str):
-    print(f"--- [DEBUG] Final Tool Name Sent to Server: '{tool_name}' ---", flush=True)
+async def call_mcp_server(tool_name: str, tool_args: dict = None):
+    """Asynchronous function to call the MCP server over SSE."""
+    if tool_args is None:
+        tool_args = {}
     
-    url = "https://api.jiucai.info/sse"
+    host = os.getenv('MCP_HOST', 'mcp-server')
+    # url = f"http://{host}:8000/sse"
+    url = MCP_SERVER_URL
     
+    print(f"--- Connecting to MCP Server at: {url} ---")
     try:
-        async with sse_client(url) as (read_stream, write_stream):
-            async with ClientSession(read_stream, write_stream) as session:
+        async with sse_client(url) as streams:
+            async with ClientSession(streams[0], streams[1]) as session:
                 await session.initialize()
-                
-                tools = await session.list_tools()
-                print(f"--- [CLIENT DEBUG] Server says it has: {[t.name for t in tools]} ---", flush=True)
-                
-                result = await session.call_tool(tool_name.strip())
+                result = await session.call_tool(tool_name, arguments=tool_args)
                 return result.content[0].text
     except Exception as e:
-        print(f"--- [CRITICAL CALL ERROR]: {str(e)} ---", flush=True)
-        return f"Error: {str(e)}"
+        if host == 'mcp-server' and os.getenv('MCP_HOST') is None:
+            print("--- Retrying with localhost... ---")
+            url = "http://localhost:8000/sse"
+            async with sse_client(url) as streams:
+                async with ClientSession(streams[0], streams[1]) as session:
+                    await session.initialize()
+                    result = await session.call_tool(tool_name, arguments=tool_args)
+                    return result.content[0].text
+        raise e
 
 def mcp_node(state: GraphState) -> dict:
     """
     This node handles data analysis by connecting to a separate MCP server via SSE.
     """
-    print("---MCP NODE (SSE CLIENT)---", flush=True)
+    print("---MCP NODE (SSE CLIENT)---")
     
     user_input = state["user_input"]
     llm = ChatUpstage()
@@ -66,14 +76,13 @@ def mcp_node(state: GraphState) -> dict:
             selected_tool = tool
             break
             
-    print(f"---CALLING TOOL: {selected_tool}---", flush=True)
+    print(f"---CALLING TOOL: {selected_tool}---")
     
     # Run the async client in a synchronous context
     try:
         analysis_result = asyncio.run(call_mcp_server(selected_tool))
-        print(f"--- [RAW DATA FROM MCP]: {analysis_result} ---", flush=True)
     except Exception as e:
         analysis_result = f"Error connecting to MCP server: {str(e)}"
-        print(analysis_result, flush=True)
+        print(analysis_result)
         
     return {"analysis_result": analysis_result}

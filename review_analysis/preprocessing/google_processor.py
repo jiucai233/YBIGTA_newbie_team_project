@@ -1,6 +1,6 @@
 # @jiucai233
 from .base_processor import BaseDataProcessor
-from rootutils.logger import setup_logger
+from utils.logger import setup_logger
 from sklearn.feature_extraction.text import TfidfVectorizer # type: ignore
 import pandas as pd # type: ignore
 import re

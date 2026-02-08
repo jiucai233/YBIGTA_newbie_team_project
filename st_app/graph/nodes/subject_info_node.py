@@ -37,7 +37,7 @@ def subject_info_node(state: GraphState) -> dict:
     Subject 정보 노드.
     사용자 질문과 subjects.json의 키워드를 매칭하여 관련 정보를 반환한다.
     """
-    print("---SUBJECT INFO NODE---", flush=True)
+    print("---SUBJECT INFO NODE---")
 
     user_input = state.get("user_input", "").strip().lower()
     subjects = _load_subjects()

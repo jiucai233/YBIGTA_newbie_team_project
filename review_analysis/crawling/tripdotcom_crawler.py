@@ -10,7 +10,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from .base_crawler import BaseCrawler
-from rootutils.logger import setup_logger
+from utils.logger import setup_logger
 
 logger = setup_logger('trip_dot_com')
 

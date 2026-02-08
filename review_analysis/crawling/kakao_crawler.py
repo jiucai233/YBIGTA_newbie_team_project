@@ -1,6 +1,6 @@
 # @chu20-afk
 from .base_crawler import BaseCrawler
-from rootutils.logger import setup_logger
+from utils.logger import setup_logger
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC

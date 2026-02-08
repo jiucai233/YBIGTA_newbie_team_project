@@ -47,15 +47,11 @@ jobs:
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_KEY }}
           script: |
-            docker compose down --remove-orphans
-
-            docker rmi ${{ secrets.DOCKER_USERNAME }}/ybigta_newbie_team_project:latest || true
-
             docker compose pull
 
-            docker compose up -d --force-recreate
+            docker compose up -d
 
-            docker image prune -f 
+            docker image prune -af 
 
-            sleep 10
-            docker logs ubuntu-mcp-server-1 | grep "Registered Tools"
+            sleep 5
+            docker ps | grep "8501"
