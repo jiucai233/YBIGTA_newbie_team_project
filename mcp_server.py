@@ -113,10 +113,10 @@ def extract_high_value_complaints(min_length: int = 100) -> str:
     formatted_samples = "\n---\n".join(samples)
     
     return f"Found {len(critical_df)} detailed complaints. Top issues:\n\n{formatted_samples}"
-
+print(f"--- [DEBUG] Registered Tools: {[t.name for t in mcp._tool_manager.list_tools()]} ---", flush=True)
+    
+print("--- Starting LotteWorld MCP Server ---", flush=True)
 if __name__ == "__main__":
     import uvicorn
-    print(f"--- [DEBUG] Registered Tools: {[t.name for t in mcp._tool_manager.list_tools()]} ---", flush=True)
     
-    print("--- Starting LotteWorld MCP Server ---", flush=True)
     uvicorn.run(mcp.sse_app, host="0.0.0.0", port=8000)
