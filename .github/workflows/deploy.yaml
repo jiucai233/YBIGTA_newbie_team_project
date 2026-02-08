@@ -47,11 +47,11 @@ jobs:
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_KEY }}
           script: |
+            docker compose down -v
             docker compose pull
-
-            docker compose up -d
-
             docker image prune -af 
+            docker compose up -d --force-recreate --build
 
-            sleep 5
-            docker ps | grep "8501"
+            sleep 10
+            docker ps
+            docker exec ubuntu-ybigta-agent-1 grep -r "st.secrets.get" /app/st_app/graph/nodes/mcp_node.py || echo "Warning: Code not updated!"
