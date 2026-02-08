@@ -11,7 +11,7 @@ services:
       - PYTHONUNBUFFERED=1
     volumes:
       - ./database:/app/database
-    command: python mcp_server.py
+    command: uvicorn mcp_server:app --host 0.0.0.0 --port 8000 --no-factory
     restart: always
 
   ybigta-agent:
