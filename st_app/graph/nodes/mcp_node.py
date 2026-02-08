@@ -68,12 +68,32 @@ def mcp_node(state: GraphState) -> dict:
             
     print(f"---CALLING TOOL: {selected_tool}---", flush=True)
     
-    # Run the async client in a synchronous context
+    # Fixed: Use asyncio.get_event_loop() or create new one if needed
     try:
-        analysis_result = asyncio.run(call_mcp_server(selected_tool))
+        # Try to get the current event loop
+        try:
+            loop = asyncio.get_event_loop()
+            if loop.is_closed():
+                raise RuntimeError("Event loop is closed")
+        except RuntimeError:
+            # No event loop exists, create a new one
+            loop = asyncio.new_event_loop()
+            asyncio.set_event_loop(loop)
+        
+        # Run the async function
+        if loop.is_running():
+            # If loop is already running (e.g., in Streamlit), use run_until_complete in a thread
+            import concurrent.futures
+            with concurrent.futures.ThreadPoolExecutor() as executor:
+                future = executor.submit(asyncio.run, call_mcp_server(selected_tool))
+                analysis_result = future.result()
+        else:
+            # If loop is not running, use run_until_complete
+            analysis_result = loop.run_until_complete(call_mcp_server(selected_tool))
+            
         print(f"--- [RAW DATA FROM MCP]: {analysis_result} ---", flush=True)
     except Exception as e:
         analysis_result = f"Error connecting to MCP server: {str(e)}"
-        print(analysis_result, flush=True)
+        print(f"--- [ERROR]: {analysis_result} ---", flush=True)
         
     return {"analysis_result": analysis_result}
