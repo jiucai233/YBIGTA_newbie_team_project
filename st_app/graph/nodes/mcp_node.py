@@ -7,34 +7,28 @@ from mcp.client.sse import sse_client
 import os
 import streamlit as st
 
-MCP_SERVER_URL = st.secrets.get("MCP_SERVER_URL", 
-                                os.getenv("MCP_HOST", "http://mcp-server:8000/sse"))
 
 async def call_mcp_server(tool_name: str, tool_args: dict = None):
-    """Asynchronous function to call the MCP server over SSE."""
     if tool_args is None:
         tool_args = {}
     
-    host = os.getenv('MCP_HOST', 'mcp-server')
-    # url = f"http://{host}:8000/sse"
-    url = MCP_SERVER_URL
+    url = st.secrets.get("MCP_SERVER_URL", "https://api.jiucai.info/sse")
     
     print(f"--- Connecting to MCP Server at: {url} ---", flush=True)
+    
     try:
-        async with sse_client(url) as streams:
-            async with ClientSession(streams[0], streams[1]) as session:
-                await session.initialize()
-                result = await session.call_tool(tool_name, arguments=tool_args)
-                return result.content[0].text
-    except Exception as e:
-        if host == 'mcp-server' and os.getenv('MCP_HOST') is None:
-            print("--- Retrying with localhost... ---", flush=True)
-            url = "http://localhost:8000/sse"
+        async with asyncio.timeout(15):
             async with sse_client(url) as streams:
                 async with ClientSession(streams[0], streams[1]) as session:
                     await session.initialize()
                     result = await session.call_tool(tool_name, arguments=tool_args)
                     return result.content[0].text
+    except asyncio.TimeoutError:
+        error_msg = "Connection timed out. Check if AWS ALB and Security Group (443) are open."
+        print(f"--- {error_msg} ---", flush=True)
+        raise Exception(error_msg)
+    except Exception as e:
+        print(f"--- MCP Connection Failed: {str(e)} ---", flush=True)
         raise e
 
 def mcp_node(state: GraphState) -> dict:
