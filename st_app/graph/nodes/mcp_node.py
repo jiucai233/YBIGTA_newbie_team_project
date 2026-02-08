@@ -8,28 +8,24 @@ import os
 import streamlit as st
 
 
-async def call_mcp_server(tool_name: str, tool_args: dict = None):
-    if tool_args is None:
-        tool_args = {}
+async def call_mcp_server(tool_name: str):
+    print(f"--- [DEBUG] Final Tool Name Sent to Server: '{tool_name}' ---", flush=True)
     
-    url = st.secrets.get("MCP_SERVER_URL", "https://api.jiucai.info/sse")
-    
-    print(f"--- Connecting to MCP Server at: {url} ---", flush=True)
+    url = "https://api.jiucai.info/sse"
     
     try:
-        async with asyncio.timeout(15):
-            async with sse_client(url) as streams:
-                async with ClientSession(streams[0], streams[1]) as session:
-                    await session.initialize()
-                    result = await session.call_tool(tool_name, arguments=tool_args)
-                    return result.content[0].text
-    except asyncio.TimeoutError:
-        error_msg = "Connection timed out. Check if AWS ALB and Security Group (443) are open."
-        print(f"--- {error_msg} ---", flush=True)
-        raise Exception(error_msg)
+        async with sse_client(url) as (read_stream, write_stream):
+            async with ClientSession(read_stream, write_stream) as session:
+                await session.initialize()
+                
+                tools = await session.list_tools()
+                print(f"--- [CLIENT DEBUG] Server says it has: {[t.name for t in tools]} ---", flush=True)
+                
+                result = await session.call_tool(tool_name.strip())
+                return result.content[0].text
     except Exception as e:
-        print(f"--- MCP Connection Failed: {str(e)} ---", flush=True)
-        raise e
+        print(f"--- [CRITICAL CALL ERROR]: {str(e)} ---", flush=True)
+        return f"Error: {str(e)}"
 
 def mcp_node(state: GraphState) -> dict:
     """
