@@ -9,7 +9,6 @@ services:
       - MCP_HOST=0.0.0.0
       - MCP_PORT=8000
     volumes:
-      - .:/app 
       - ./database:/app/database
     command: uvicorn mcp_server:mcp.sse_app --host 0.0.0.0 --port 8000
     restart: always
@@ -23,7 +22,6 @@ services:
     environment:
       - MCP_HOST=mcp-server
     volumes:
-      - .:/app 
       - ./database:/app/database
       - ./st_app/db:/app/st_app/db
     command: streamlit run streamlit_app.py --server.port 8501 --server.address 0.0.0.0
