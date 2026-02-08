@@ -18,6 +18,8 @@ def load_and_unify_data():
     # trip_path = os.path.join(base_path, "data", "trip_advisor_reviews.csv")
     
     try:
+        print(f"--- [DEBUG] CWD: {os.getcwd()} ---", flush=True)
+        print(f"--- [DEBUG] Reading CSV from: {kakao_path} ---", flush=True)
         df_kakao = pd.read_csv(kakao_path)
         df_trip = pd.read_csv(trip_path)
         
@@ -114,4 +116,7 @@ def extract_high_value_complaints(min_length: int = 100) -> str:
 
 if __name__ == "__main__":
     import uvicorn
+    print(f"--- [DEBUG] Registered Tools: {[t.name for t in mcp._tool_manager.list_tools()]} ---", flush=True)
+    
+    print("--- Starting LotteWorld MCP Server ---", flush=True)
     uvicorn.run(mcp.sse_app, host="0.0.0.0", port=8000)
