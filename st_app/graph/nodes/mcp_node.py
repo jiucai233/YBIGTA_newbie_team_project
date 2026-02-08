@@ -7,16 +7,20 @@ from mcp.client.sse import sse_client
 import os
 import streamlit as st
 
-MCP_SERVER_URL = st.secrets.get("MCP_SERVER_URL", 
-                                os.getenv("MCP_HOST", "http://mcp-server:8000/sse"))
+try:
+    MCP_SERVER_URL = st.secrets.get("MCP_SERVER_URL")
+except Exception:
+    MCP_SERVER_URL = None
 
+if not MCP_SERVER_URL:
+    mcp_host = os.getenv("MCP_HOST", "mcp-server")
+    MCP_SERVER_URL = f"http://{mcp_host}:8000/sse"
+
+print(f"--- Final MCP URL: {MCP_SERVER_URL} ---")
 async def call_mcp_server(tool_name: str, tool_args: dict = None):
     """Asynchronous function to call the MCP server over SSE."""
     if tool_args is None:
         tool_args = {}
-    
-    host = os.getenv('MCP_HOST', 'mcp-server')
-    # url = f"http://{host}:8000/sse"
     url = MCP_SERVER_URL
     
     print(f"--- Connecting to MCP Server at: {url} ---")
@@ -27,7 +31,7 @@ async def call_mcp_server(tool_name: str, tool_args: dict = None):
                 result = await session.call_tool(tool_name, arguments=tool_args)
                 return result.content[0].text
     except Exception as e:
-        if host == 'mcp-server' and os.getenv('MCP_HOST') is None:
+        if mcp_host == 'mcp-server' and os.getenv('MCP_HOST') is None:
             print("--- Retrying with localhost... ---")
             url = "http://localhost:8000/sse"
             async with sse_client(url) as streams:
