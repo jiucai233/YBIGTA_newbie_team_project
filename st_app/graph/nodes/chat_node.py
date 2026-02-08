@@ -10,7 +10,7 @@ def chat_node(state: GraphState) -> dict:
     앞단 노드에서 수집한 context(review/subject/analysis)를 시스템 지침에 넣고
     chat_history를 바탕으로 답변을 생성한다.
     """
-    print("---CHAT NODE---")
+    print("---CHAT NODE---", flush=True)
 
     llm = ChatUpstage()
 
