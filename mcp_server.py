@@ -64,8 +64,8 @@ def extract_high_value_complaints(min_length: int = 100) -> str:
 
 registered = [t.name for t in mcp._tool_manager.list_tools()]
 print(f"--- [CRITICAL DEBUG] Registered Tools: {registered} ---", flush=True)
-
+app = mcp.sse_app
 if __name__ == "__main__":
     import uvicorn
     print("--- [BOOT] Starting Uvicorn for MCP Server ---", flush=True)
-    uvicorn.run(mcp.sse_app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=8000)
