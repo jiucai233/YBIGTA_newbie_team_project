@@ -75,6 +75,7 @@ def mcp_node(state: GraphState) -> dict:
     # Run the async client in a synchronous context
     try:
         analysis_result = asyncio.run(call_mcp_server(selected_tool))
+        print(f"--- [RAW DATA FROM MCP]: {analysis_result} ---", flush=True)
     except Exception as e:
         analysis_result = f"Error connecting to MCP server: {str(e)}"
         print(analysis_result, flush=True)

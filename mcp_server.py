@@ -18,6 +18,8 @@ def load_and_unify_data():
     # trip_path = os.path.join(base_path, "data", "trip_advisor_reviews.csv")
     
     try:
+        print(f"--- [DEBUG] CWD: {os.getcwd()} ---", flush=True)
+        print(f"--- [DEBUG] Reading CSV from: {kakao_path} ---", flush=True)
         df_kakao = pd.read_csv(kakao_path)
         df_trip = pd.read_csv(trip_path)
         
