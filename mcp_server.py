@@ -11,8 +11,8 @@ def load_and_unify_data():
     Loads Kakao and Tripadvisor datasets and ensures uniform formatting.
     """
     # Define your local paths here
-    kakao_path = "./database/preprocessed_reviews_kakao.csv"
-    trip_path = "./database/preprocessed_reviews_tripdotcom.csv"
+    kakao_path = "/app/database/preprocessed_reviews_kakao.csv"
+    trip_path = "/app/database/preprocessed_reviews_tripdotcom.csv"
     # base_path = os.path.dirname(os.path.abspath(__file__))
     # kakao_path = os.path.join(base_path, "data", "kakao_reviews.csv")
     # trip_path = os.path.join(base_path, "data", "trip_advisor_reviews.csv")
