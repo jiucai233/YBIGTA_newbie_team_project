@@ -9,7 +9,7 @@ router = APIRouter(prefix="/review")
 
 @router.post("/preprocess/{site_name}")
 def preprocess_reviews(site_name: str):
-    print(f"✅ 들어온 요청 site_name: {site_name}", flush=True)
+    print(f"✅ 들어온 요청 site_name: {site_name}")
 
     # 1. MongoDB에서 데이터 가져오기 (List[Dict] 형태)
     reviews = get_reviews(site_name)

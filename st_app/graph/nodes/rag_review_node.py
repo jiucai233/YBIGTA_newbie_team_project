@@ -8,7 +8,7 @@ def rag_review_node(state: GraphState) -> dict:
     사용자 질문과 유사한 리뷰를 검색하여 컨텍스트로 반환한다.
     이후 chat_node가 이 컨텍스트를 활용해 최종 답변을 생성한다.
     """
-    print("---RAG REVIEW NODE---", flush=True)
+    print("---RAG REVIEW NODE---")
     user_input = state["user_input"]
 
     docs = retrieve_reviews(user_input, k=5)

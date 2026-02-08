@@ -1,7 +1,7 @@
 # @jiucai233
 from typing import List, Dict, Any, Optional
 from review_analysis.crawling.base_crawler import BaseCrawler
-from rootutils.logger import setup_logger
+from utils.logger import setup_logger
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
